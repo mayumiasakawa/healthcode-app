@@ -17,18 +17,18 @@
                               <%= render "devise/shared/error_messages", resource: resource %>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <%= f.text_field :last_name, class:"input-default form-control form-control-user", id:"exampleLastName", placeholder:"苗字", maxlength:"40" %>
+                                        <%= f.text_field :last_name, class:"input-default form-control form-control-user", id:"exampleLastName", placeholder:"苗字 全角", maxlength:"40" %>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <%= f.text_field :first_name, class:"input-default form-control form-control-user", id:"exampleFirstName", placeholder:"名前", maxlength:"40" %>
+                                        <%= f.text_field :first_name, class:"input-default form-control form-control-user", id:"exampleFirstName", placeholder:"名前 全角", maxlength:"40" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <%= f.text_field :last_name_kana, class:"input-default form-control form-control-user", id:"exampleLastNameKana", placeholder:"苗字カナ", maxlength:"40" %>
+                                        <%= f.text_field :last_name_kana, class:"input-default form-control form-control-user", id:"exampleLastNameKana", placeholder:"苗字カナ 全角", maxlength:"40" %>
                                     </div>
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <%= f.text_field :first_name_kana, class:"input-default form-control form-control-user", id:"exampleFirstNameKana", placeholder:"名前カナ", maxlength:"40" %>
+                                        <%= f.text_field :first_name_kana, class:"input-default form-control form-control-user", id:"exampleFirstNameKana", placeholder:"名前カナ 全角", maxlength:"40" %>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                      <%= f.password_field :password, class:"input-default form-control form-control-user", id:"password exampleInputPassword", placeholder:"Password" %>
+                                      <%= f.password_field :password, class:"input-default form-control form-control-user", id:"password exampleInputPassword", placeholder:"Password - 6字以上・半角英数字混合" %>
                                     </div>
                                     <div class="col-sm-6">
                                       <%= f.password_field :password_confirmation, class:"input-default form-control form-control-user", id:"password-confirmation exampleRepeatPassword", placeholder:"Repeat Password" %>
