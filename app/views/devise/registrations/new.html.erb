@@ -14,55 +14,67 @@
                             </div>
 
                             <%= form_with model: @user, url: user_registration_path, class: 'registration-main user', local: true do |f| %>
+                              <%= render "devise/shared/error_messages", resource: resource %>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <%= f.text_field :first_name, class:"input-default form-control form-control-user", id:"exampleFirstName", placeholder:"First Name", maxlength:"40" %>
                                     </div>
                                     <div class="col-sm-6">
-                                        <%= f.text_field :first_name, class:"input-default form-control form-control-user", id:"exampleLastName", placeholder:"Last Name", maxlength:"40" %>
+                                        <%= f.text_field :last_name, class:"input-default form-control form-control-user", id:"exampleLastName", placeholder:"Last Name", maxlength:"40" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <%= f.text_field :text, class:"input-default form-control form-control-user", id:"exampleFirstNameKana", placeholder:"First Name Kana", maxlength:"40" %>
+                                        <%= f.text_field :first_name_kana, class:"input-default form-control form-control-user", id:"exampleFirstNameKana", placeholder:"First Name Kana", maxlength:"40" %>
                                     </div>
                                     <div class="col-sm-6">
-                                        <%= f.text_field :text, class:"input-default form-control form-control-user", id:"exampleLastNameKana", placeholder:"Last Name Kana", maxlength:"40" %>
+                                        <%= f.text_field :last_name_kana, class:"input-default form-control form-control-user", id:"exampleLastNameKana", placeholder:"Last Name Kana", maxlength:"40" %>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <%= f.text_field :text, class:"input-default form-control form-control-user", id:"birthday", placeholder:"Birthday" %>
+                                    <div class='input-birth-wrap'>
+                                      <%= raw sprintf(
+                                                  f.date_select(
+                                                    :birthday,
+                                                    class:'select-birth birthday',
+                                                    id:"birth-date birthday",
+                                                    use_month_numbers: true,
+                                                    prompt:'--',
+                                                    start_year: 1930,
+                                                    end_year: (Time.now.year - 5),
+                                                    date_separator: '%s'),
+                                                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+                                    </div>
+
+                                    
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <%= f.email_field :email, class:"input-default form-control form-control-user", id:"exampleInputEmail", placeholder:"Email Address", autofocus: true %>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <%= f.text_field :password, class:"input-default form-control form-control-user", id:"exampleInputPassword", placeholder:"Password" %>
+                                      <%= f.password_field :password, class:"input-default form-control form-control-user", id:"password exampleInputPassword", placeholder:"Password" %>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <%= f.password_field :password_confirmation, class:"input-default form-control form-control-user", id:"password-confirmation exampleRepeatPassword", placeholder:"Repeat Password" %>
 
                                     </div>
-                                    <div class="col-sm-6">
-                                        <%= f.text_field :password, class:"input-default form-control form-control-user", id:"exampleRepeatPassword", placeholder:"Repeat Password" %>
-                                    </div>
                                 </div>
-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <%= f.submit "Register Account" ,class:"rbtn btn-primary btn-user btn-block" %>
                                 <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
+                                <a href="#" class="btn btn-google btn-user btn-block">
                                     Register with Google
                                 </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                <a href="#" class="btn btn-facebook btn-user btn-block">
                                     Register with Facebook
                                 </a>
                             <% end %>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                <a class="small" href="#">Forgot Password?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.html">Already have an account? Login!</a>
+                                <a class="small" href="#">Already have an account? Login!</a>
                             </div>
                         </div>
                     </div>
@@ -72,3 +84,6 @@
 
     </div>
   </div>
+
+  <%= render "devise/shared/links" %>
+
