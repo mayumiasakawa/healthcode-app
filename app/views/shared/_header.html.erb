@@ -1,26 +1,43 @@
-<!-- Topbar Navbar -->
-<ul class="navbar-nav ml-auto">
 
-    <div class="topbar-divider d-none d-sm-block"></div>
+<!-- Topbar -->
+             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-    <!-- Nav Item - User Information -->
-    <li class="nav-item no-arrow">
-        <a class="nav-link" href="#" id="userDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small">ログイン名</span>
-        </a>
-    </li>
+                 <!-- Topbar Navbar -->
+                 <ul class="navbar-nav ml-auto">
 
-    <div class="topbar-divider d-none d-sm-block"></div>
-    
-    <li class="nav-item no-arrow">
-        <a class="nav-link" href="#" id="userDropdown" role="button"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small">ログアウト</span>
-        </a>
-    </li>
+                     <div class="topbar-divider d-none d-sm-block"></div>
 
-</ul>
+                     <!-- Nav Item - User Information -->
+                     <% if user_signed_in? %>
+                     <li class="nav-item no-arrow">
+                         <span class="nav-link">
+                             <%= link_to current_user.last_name  + current_user.first_name + "様", "#", class: "mr-2 d-none d-lg-inline text-gray-600 small"%>
+                         </span>
+                     </li>
 
-</nav>
+                     <div class="topbar-divider d-none d-sm-block"></div>
+                     
+                     <li class="nav-item no-arrow">
+                         <span class="nav-link">
+                             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mr-2 d-none d-lg-inline text-gray-600 small"%>
+                         </span>
+                     </li>
+                     <% else %>
+                     <li class="nav-item no-arrow">
+                         <span class="nav-link">
+                             <%= link_to 'ログイン', new_user_session_path, class: "mr-2 d-none d-lg-inline text-gray-600 small" %>
+                         </span>
+                     </li>
+
+                     <div class="topbar-divider d-none d-sm-block"></div>
+                     
+                     <li class="nav-item no-arrow">
+                         <span class="nav-link">
+                             <%= link_to '新規登録', new_user_registration_path, class: "mr-2 d-none d-lg-inline text-gray-600 small" %>
+                         </span>
+                     </li>
+                     <% end %>
+                 </ul>
+
+             </nav>
 <!-- End of Topbar -->
