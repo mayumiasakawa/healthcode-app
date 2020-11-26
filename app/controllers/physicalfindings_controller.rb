@@ -1,6 +1,6 @@
 class PhysicalfindingsController < ApplicationController
   def index
-    render :new
+    redirect_to new_physicalfinding_path
   end
 
   def new
@@ -13,14 +13,14 @@ class PhysicalfindingsController < ApplicationController
       @physicalfinding.save
       redirect_to root_path
     else
-      render :index
+      render :new
     end
   end
 
   private
 
   def physicalfinding_params
-    params.permit(:measuring_date, :weight, :height, :abdominal_circumference)
+    params.require(:physicalfinding).permit(:measuring_date, :weight, :height, :abdominal_circumference)
   end
 
 end
