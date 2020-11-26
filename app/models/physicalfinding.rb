@@ -1,0 +1,2 @@
+class Physicalfinding < ApplicationRecord
+end
