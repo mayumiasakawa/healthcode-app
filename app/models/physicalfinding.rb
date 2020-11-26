@@ -8,7 +8,7 @@ class Physicalfinding < ApplicationRecord
 
   private
   def height_or_weight_or_abdominal
-    :heigh.present? || :weight.present? || :abdominal_circumference.present?
+    :height.present? || :weight.present? || :abdominal_circumference.present?
   end
 
 end
