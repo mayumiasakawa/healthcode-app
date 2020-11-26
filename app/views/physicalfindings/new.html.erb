@@ -1,0 +1,69 @@
+<div  id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <%= render "shared/sidebar" %>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+        <div id="content">
+
+          <%= render "shared/header" %>
+
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-left">
+                            <h1 class="h4 text-gray-900 mb-4">身長・体重・腹囲</h1>
+                        </div>
+
+                        <%= form_with model: @physicalfinding, url: physicalfindings_path, class: 'registration-main user', local: true do |f| %>
+
+                          <div class="form-group">
+                              <div class='input-date-wrap'>
+                                <label class="mr-4">測定日</label>
+                                   <%= raw sprintf(
+                                                f.date_select(
+                                                  :measuring_date,
+                                                  use_month_numbers: true,
+                                                  prompt:'--',
+                                                  start_year: 2000,
+                                                  end_year: (Time.now.year),
+                                                  date_separator: '%s'),
+                                                "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+                              </div>                                
+                          </div>
+
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <%= f.text_field :height, class:"input-default form-control form-control-user", id:"height", placeholder:"身長（半角）", maxlength:"3" %> 
+                                </div>
+                                <p class="mt-4"> cm </p>                                
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                  <%= f.text_field :weight, class:"input-default form-control form-control-user", id:"weight", placeholder:"体重（半角）", maxlength:"3" %>  
+                                </div>
+                                <p class="mt-4"> kg </p>    
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6">
+                                    <%= f.text_field :abdominal_circumference, class:"input-default form-control form-control-user", id:"abdominal_cicumference", placeholder:"腹囲（半角）", maxlength:"3" %>
+                                </div>
+                                <p class="mt-4"> cm </p>  
+                            </div>
+                          
+                            <%= f.submit "登録" ,class:"rbtn btn-primary btn-user btn-block" %>
+                        <% end %>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+
