@@ -1,0 +1,23 @@
+<% if model.errors.any? %>
+
+<!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    <!-- 404 Error Text -->
+     <div class="text-center">
+      <div class="error mx-auto">Error</div>
+        <p class="lead text-gray-800 mb-5">
+        <% model.errors.full_messages.each do |message| %>
+        </p>
+        <p>
+        <%= message %>
+        </p>
+      <% end %>
+    </div>
+
+   <!-- /.container-fluid -->
+
+   </div>
+   <!-- End of Main Content -->
+
+   <% end %>

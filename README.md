@@ -38,29 +38,28 @@ Things you may want to cover:
 - has_one :overviews
 
 ## overviews テーブル
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| allergies    | string     |                                |
-| alcohol      | string     |                                |
-| cigarette    | string     |                                |
-| user         | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ----------------- | ---------- | ------------------------------ |
+| user              | references | null: false, foreign_key: true |
+| physicalfinding   | references | null: false, foreign_key: true |
+| clinicaltest      | references | null: false, foreign_key: true |
+| vaccine           | references | null: false, foreign_key: true |
+| medicalhistory    | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
-- has_one :overviews
-- has_one :physicalfindings
-- has_one :vaccine
-- has_one :medicalhistories
+- has_many :overviews
+- has_many :physicalfindings
+- has_many :	vaccines
+- has_many :medicalhistories
 
 
 ## physicalfindings テーブル
 | Column                  | Type     | Options      |
 | ----------------------- | -------- | ------------ |
-| year                    | integer  | null: false  |
-| month                   | integer  | null: false  |
-| date                    | integer  | null: false  |
+| measuring_date           | date     | null: false  |
 | weight                  | integer  |              |
-| height                   | integer |              |
+| height                  | integer  |              |
 | abdominal_circumference | integer  |              |
 
 ### Association
@@ -69,9 +68,7 @@ Things you may want to cover:
 ## bloodsampling テーブル
 | Column                  | Type     | Options      |
 | ----------------------- | -------- | ------------ |
-| year                    | integer  | null: false  |
-| month                   | integer  | null: false  |
-| date                    | integer  | null: false  |
+| measuring_date           | date     | null: false  |
 
 ### Association
 belongs_to :overviews
@@ -79,9 +76,7 @@ belongs_to :overviews
 ## vaccines テーブル
 | Column                  | Type     | Options      |
 | ----------------------- | -------- | ------------ |
-| year                    | integer  | null: false  |
-| month                   | integer  | null: false  |
-| date                    | integer  | null: false  |
+| measuring_date           | date     | null: false  |
 | type                    | string   | null: false  |
 
 ### Association
@@ -90,9 +85,7 @@ belongs_to :overviews
 ## medicalhistories テーブル
 | Column                  | Type     | Options      |
 | ----------------------- | -------- | ------------ |
-| year                    | integer  | null: false  |
-| month                   | integer  | null: false  |
-| date                    | integer  | null: false  |
+| measuring_date           | date     | null: false  |
 | clinic_name             | string   | null: false  |
 | department              | string   | null: false  |
 | medicine                | string   |              |
