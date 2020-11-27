@@ -5,6 +5,7 @@ class CreatePhysicalfindings < ActiveRecord::Migration[6.0]
       t.integer :weight
       t.integer :height
       t.integer :abdominal_circumference
+      t.references :overview
       t.timestamps
     end
   end

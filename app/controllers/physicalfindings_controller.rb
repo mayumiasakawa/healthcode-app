@@ -1,6 +1,4 @@
 class PhysicalfindingsController < ApplicationController
-  before_action :authenticate_user!
-
   def index
     redirect_to new_physicalfinding_path
   end
