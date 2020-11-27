@@ -38,58 +38,18 @@ Things you may want to cover:
 - has_one :overviews
 
 ## overviews テーブル
-| Column            | Type       | Options                        |
-| ----------------- | ---------- | ------------------------------ |
-| user              | references | null: false, foreign_key: true |
-| physicalfinding   | references | null: false, foreign_key: true |
-| clinicaltest      | references | null: false, foreign_key: true |
-| vaccine           | references | null: false, foreign_key: true |
-| medicalhistory    | references | null: false, foreign_key: true |
+| Column                  | Type       | Options                        |
+| ----------------------- | ---------- | ------------------------------ |
+| user                    | references | null: false, foreign_key: true |
+| measuring_date          | date       | null: false                    |
+| weight                  | integer    | null: false ,if:->{}           |
+| height                  | integer    | null: false ,if:->{}           |
+| abdominal_circumference | integer    | null: false ,if:->{}           |
+| bloodsampling           | img        | null: false ,if:->{}           |
+| vaccines_type           | string     | null: false ,if:->{}           | 
+| medicine                | string     | null: false ,if:->{}           |
+| department              | string     | null: false ,if:->{}           |
+| clinic_name             | string     | null: false ,if:->{}           |
 
 ### Association
 - belongs_to :user
-- has_many :overviews
-- has_many :physicalfindings
-- has_many :	vaccines
-- has_many :medicalhistories
-
-
-## physicalfindings テーブル
-| Column                  | Type     | Options      |
-| ----------------------- | -------- | ------------ |
-| measuring_date           | date     | null: false  |
-| weight                  | integer  |              |
-| height                  | integer  |              |
-| abdominal_circumference | integer  |              |
-
-### Association
-- belongs_to :overviews
-
-## bloodsampling テーブル
-| Column                  | Type     | Options      |
-| ----------------------- | -------- | ------------ |
-| measuring_date           | date     | null: false  |
-
-### Association
-belongs_to :overviews
-
-## vaccines テーブル
-| Column                  | Type     | Options      |
-| ----------------------- | -------- | ------------ |
-| measuring_date           | date     | null: false  |
-| type                    | string   | null: false  |
-
-### Association
-belongs_to :overviews
-
-## medicalhistories テーブル
-| Column                  | Type     | Options      |
-| ----------------------- | -------- | ------------ |
-| measuring_date           | date     | null: false  |
-| clinic_name             | string   | null: false  |
-| department              | string   | null: false  |
-| medicine                | string   |              |
-
-### Association
-belongs_to :overviews
-
