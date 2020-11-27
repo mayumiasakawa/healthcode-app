@@ -10,27 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_040522) do
+ActiveRecord::Schema.define(version: 2020_11_27_124106) do
 
   create_table "overviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "physicalfinding_id", null: false
-    t.bigint "clinicaltest_id", null: false
-    t.bigint "vaccine_id", null: false
-    t.bigint "medicalhistory_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "physicalfindings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "measuring_date"
     t.integer "weight"
     t.integer "height"
     t.integer "abdominal_circumference"
-    t.bigint "overview_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["overview_id"], name: "index_physicalfindings_on_overview_id"
+    t.index ["user_id"], name: "index_overviews_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,4 +40,5 @@ ActiveRecord::Schema.define(version: 2020_11_26_040522) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "overviews", "users"
 end

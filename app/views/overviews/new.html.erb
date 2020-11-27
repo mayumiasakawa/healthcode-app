@@ -20,7 +20,7 @@
                             <h1 class="h4 text-gray-900 mb-4">身長・体重・腹囲</h1>
                         </div>
 
-                        <%= form_with model: @physicalfinding, url: physicalfindings_path, class: 'user', local: true do |f| %>
+                        <%= form_with model: @overview, url: overviews_path, class: 'user', local: true do |f| %>
 
                           <%= render 'shared/error_messages', model: f.object %>
 
