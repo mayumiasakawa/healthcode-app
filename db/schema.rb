@@ -27,8 +27,10 @@ ActiveRecord::Schema.define(version: 2020_11_26_040522) do
     t.integer "weight"
     t.integer "height"
     t.integer "abdominal_circumference"
+    t.bigint "overview_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["overview_id"], name: "index_physicalfindings_on_overview_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
