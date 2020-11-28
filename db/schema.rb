@@ -35,10 +35,17 @@ ActiveRecord::Schema.define(version: 2020_11_28_102102) do
 
   create_table "overviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.date "measuring_date"
+    t.date "physicalfinding_measuring_date"
     t.integer "weight"
     t.integer "height"
+    t.integer "bmi"
     t.integer "abdominal_circumference"
+    t.date "blood_urine_test_date"
+    t.date "medeical_care_date"
+    t.string "clinic_name"
+    t.string "disease_name"
+    t.date "vaccine_date"
+    t.string "vaccine_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_overviews_on_user_id"
