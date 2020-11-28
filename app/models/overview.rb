@@ -1,6 +1,7 @@
 class Overview < ApplicationRecord
 
   belongs_to :user, optional: true
+  has_one_attached :image
 
   validates :measuring_date, presence: true
   validates :height, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 200 }, format: {with: /\A[0-9]+\z/}, presence: true, if: -> { weight.blank? && abdominal_circumference.blank? }
