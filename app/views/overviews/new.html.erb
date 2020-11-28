@@ -14,53 +14,47 @@
 
             <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-lg-7">
-                    <div class="p-5">
-                        <div class="text-left">
-                            <h1 class="h4 text-gray-900 mb-4">身長・体重・腹囲</h1>
-                        </div>
-
+                <div class="col-lg-10">
+                    <div class="pl-5 pt-3">
+    
                         <%= form_with model: @overview, url: overviews_path, class: 'user', local: true do |f| %>
-
+    
                           <%= render 'shared/error_messages', model: f.object %>
 
-                          <div class="form-group">
+                          <label class="card card-body m-3 py-3 border-left-secondary">測定日</label>
+                          <div class="form-group ml-4">
                               <div class='input-date-wrap'>
-                                <label class="mr-4">測定日</label>
-                                   <%= raw sprintf(
-                                                f.date_select(
-                                                  :measuring_date,
-                                                  use_month_numbers: true,
-                                                  prompt:'--',
-                                                  start_year: 2000,
-                                                  end_year: (Time.now.year),
-                                                  date_separator: '%s'),
-                                                "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
+                                <%= raw sprintf(
+                                              f.date_select(
+                                                :measuring_date,
+                                                use_month_numbers: true,
+                                                prompt:'--',
+                                                start_year: (Time.now.year),
+                                                end_year: 2000,
+                                                date_separator: '%s'),
+                                              "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
                               </div>                                
                           </div>
+                            
+                          <div class="card card-body m-3 py-3 border-left-success">
+                              身長・体重・腹囲
+                          </div>
 
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <%= f.text_field :height, class:"input-default form-control form-control-user", id:"height", placeholder:"身長（半角）", maxlength:"3" %> 
+                            <div class="form-group row ml-4">
+                                <div class="col-md-4 mt-2">
+                                  <%= f.text_field :height, class:"input-default form-control form-control-user overview", id:"height", placeholder:"身長（半角）cm", maxlength:"3" %> 
+                                </div>                             
+                                <div class="col-md-4 mt-2">
+                                  <%= f.text_field :weight, class:"input-default form-control form-control-user overview", id:"weight", placeholder:"体重（半角）cm", maxlength:"3" %>  
                                 </div>
-                                <p class="mt-4"> cm </p>                                
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                  <%= f.text_field :weight, class:"input-default form-control form-control-user", id:"weight", placeholder:"体重（半角）", maxlength:"3" %>  
+                                <div class="col-md-4 mt-2">
+                                  <%= f.text_field :abdominal_circumference, class:"input-default form-control form-control-user overview", id:"abdominal_cicumference", placeholder:"腹囲（半角）cm", maxlength:"3" %>
                                 </div>
-                                <p class="mt-4"> kg </p>    
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-sm-6">
-                                    <%= f.text_field :abdominal_circumference, class:"input-default form-control form-control-user", id:"abdominal_cicumference", placeholder:"腹囲（半角）", maxlength:"3" %>
-                                </div>
-                                <p class="mt-4"> cm </p>  
                             </div>
                           
                             <%= f.submit "登録" ,class:"rbtn btn-primary btn-user btn-block" %>
+                            <hr>
                         <% end %>
-                        <hr>
                     </div>
                 </div>
             </div>
