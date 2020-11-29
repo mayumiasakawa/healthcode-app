@@ -10873,9 +10873,11 @@ form.user .form-control-user {
 
 form.user .overview{
   font-size: 0.8rem;
+  border: 1px solid #d1d3e2;
   border-radius: 10rem;
   padding: 1.5rem 1rem;
-  width: 160px;
+  width: 80%;
+  color :#6e707e;
 }
 
 form.user .btn-user {
