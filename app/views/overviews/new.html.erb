@@ -97,11 +97,14 @@
                                               "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
                               </div>                                
                               <div class="row">
-                                <div class="col-md-4 mt-2">
-                                  <%= f.text_field :clinic_name, class:"input-default form-control form-control-user overview", id:"clinic_name", placeholder:"病院名", maxlength:"40" %> 
+                                <div class="col-12 mt-2">
+                                  <%= f.text_field :clinic_name, class:"input-default form-control form-control-user overview-medical-care", id:"clinic_name", placeholder:"病院名(◯◯クリニックなど)", maxlength:"40" %> 
                                 </div>                             
-                                <div class="col-md-4 mt-2">
-                                  <%= f.text_field :disease_name, class:"input-default form-control form-control-user overview", id:"disease_name", placeholder:"病名", maxlength:"40" %>  
+                                <div class="col-12 mt-2">
+                                  <%= f.text_field :disease_name, class:"input-default form-control form-control-user overview-medical-care", id:"disease_name", placeholder:"病名(胃ポリープ、膀胱炎など)", maxlength:"40" %>  
+                                </div>
+                                <div class="col-12 mt-2">
+                                  <%= f.text_field :treatment_medicine, class:"input-default form-control form-control-user overview-medical-care", id:"treatment_medicine", placeholder:"処置・薬(内視鏡、抗生剤 服用など)", maxlength:"40" %>  
                                 </div>
                               </div>
                           </div>

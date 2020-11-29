@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_102102) do
     t.date "medeical_care_date"
     t.string "clinic_name"
     t.string "disease_name"
+    t.string "treatment_medicine"
     t.date "vaccine_date"
     t.string "vaccine_name"
     t.datetime "created_at", precision: 6, null: false
