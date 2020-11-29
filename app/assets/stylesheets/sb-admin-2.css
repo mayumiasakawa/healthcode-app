@@ -11,12 +11,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
- .scrollspy {
-  position: relative;
-  height: 350px;
-  overflow: auto;
-}
-
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
