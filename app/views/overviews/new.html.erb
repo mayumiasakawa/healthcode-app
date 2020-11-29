@@ -67,10 +67,68 @@
                                                 date_separator: '%s'),
                                               "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
                               </div>                                 
-                              <div class="btn btn-light btn-icon-split mt-2 blood-urine-test">  
+                              
+                              <div class="btn btn-light btn-icon-split mt-2 blood-urine-test"> 
                                 <label class="text">画像を選択
-                                    <%= f.file_field :image, id:"item-image", style:"display:none" %>
+                                  <%= f.file_field :image, style:"display:none"  %>
                                 </label>
+                              </div>
+                                
+                              <div id="image-list"></div>
+                              
+                              <%= image_tag @overview.image, id: 'image' if @overview.image.present? %> 
+
+                          </div>
+
+                          <div class="card card-body m-3 py-3 border-left-warning">
+                          受診歴
+                          </div>
+                          <div class="form-group ml-4">
+                              <div class='input-date-wrap'>
+                                <label class="col-sm-12 col-md-2 mr-4">受診日</label>
+                                <%= raw sprintf(
+                                              f.date_select(
+                                                :medeical_care_date,
+                                                use_month_numbers: true,
+                                                prompt:'--',
+                                                start_year: (Time.now.year),
+                                                end_year: 2000,
+                                                date_separator: '%s'),
+                                              "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
+                              </div>                                
+                              <div class="row">
+                                <div class="col-12 mt-2">
+                                  <%= f.text_field :clinic_name, class:"input-default form-control form-control-user overview-medical-care", id:"clinic_name", placeholder:"病院名(◯◯クリニックなど)", maxlength:"40" %> 
+                                </div>                             
+                                <div class="col-12 mt-2">
+                                  <%= f.text_field :disease_name, class:"input-default form-control form-control-user overview-medical-care", id:"disease_name", placeholder:"病名(胃ポリープ、膀胱炎など)", maxlength:"40" %>  
+                                </div>
+                                <div class="col-12 mt-2">
+                                  <%= f.text_field :treatment_medicine, class:"input-default form-control form-control-user overview-medical-care", id:"treatment_medicine", placeholder:"処置・薬(内視鏡、抗生剤 服用など)", maxlength:"40" %>  
+                                </div>
+                              </div>
+                          </div>
+
+                          <div class="card card-body m-3 py-3 border-left-danger">
+                          ワクチン接種歴
+                          </div>
+                          <div class="form-group ml-4">
+                              <div class='input-date-wrap'>
+                                <label class="col-sm-12 col-md-2 mr-4">接種日</label>
+                                <%= raw sprintf(
+                                              f.date_select(
+                                                :vaccine_date,
+                                                use_month_numbers: true,
+                                                prompt:'--',
+                                                start_year: (Time.now.year),
+                                                end_year: 2000,
+                                                date_separator: '%s'),
+                                              "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
+                              </div>                                
+                              <div class="row">
+                                <div class="col-md-4 mt-2">
+                                  <%= f.text_field :vaccine_name, class:"input-default form-control form-control-user overview", id:"vaccine_name", placeholder:"ワクチン名", maxlength:"40" %> 
+                                </div>
                               </div>
                           </div>
                           

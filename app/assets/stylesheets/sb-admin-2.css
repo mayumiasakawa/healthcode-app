@@ -11276,3 +11276,16 @@ body.sidebar-toggled footer.sticky-footer {
   color: #6e707e;
   height: calc(1.5em + 0.75rem + 2px);
 }
+
+.overview-medical-care{
+  border-radius: 10rem;
+  border: 1px solid #d1d3e2;
+  color: #6e707e;
+  height: calc(1.5em + 0.75rem + 2px);
+  width :90%;
+}
+
+#image-list img{
+  width: 50%;
+  height: 50%;
+}
