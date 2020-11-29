@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_102102) do
     t.string "disease_name"
     t.string "treatment_medicine"
     t.date "vaccine_date"
-    t.string "vaccine_name"
+    t.integer "vaccine_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_overviews_on_user_id"

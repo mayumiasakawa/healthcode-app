@@ -13,7 +13,7 @@ class CreateOverviews < ActiveRecord::Migration[6.0]
       t.string :disease_name
       t.string :treatment_medicine
       t.date :vaccine_date
-      t.string :vaccine_name
+      t.integer :vaccine_id
       t.timestamps
     end
   end
