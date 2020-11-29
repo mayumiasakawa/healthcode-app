@@ -67,11 +67,17 @@
                                                 date_separator: '%s'),
                                               "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
                               </div>                                 
-                              <div class="btn btn-light btn-icon-split mt-2 blood-urine-test">  
+                              
+                              <div class="btn btn-light btn-icon-split mt-2 blood-urine-test"> 
                                 <label class="text">画像を選択
-                                    <%= f.file_field :image, id:"item-image", style:"display:none" %>
+                                  <%= f.file_field :image, style:"display:none"  %>
                                 </label>
                               </div>
+                                
+                              <div id="image-list"></div>
+                              
+                              <%= image_tag @overview.image, id: 'image' if @overview.image.present? %> 
+
                           </div>
 
                           <div class="card card-body m-3 py-3 border-left-warning">
