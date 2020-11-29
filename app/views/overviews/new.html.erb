@@ -27,7 +27,7 @@
                           </div>
                           <div class="form-group ml-4">
                               <div class='input-date-wrap'>
-                                <label class="mr-4">測定日</label>
+                                <label class="col-sm-12 col-md-2 mr-4">測定日</label>
                                 <%= raw sprintf(
                                               f.date_select(
                                                 :physicalfinding_measuring_date,
@@ -38,15 +38,16 @@
                                                 date_separator: '%s'),
                                               "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
                               </div>                                
-                        
-                              <div class="md-4 mt-2">
-                                <%= f.text_field :height, class:"input-default form-control form-control-user overview", id:"height", placeholder:"身長（半角）cm", maxlength:"3" %> 
-                              </div>                             
-                              <div class="col-md-4 mt-2">
-                                <%= f.text_field :weight, class:"input-default form-control form-control-user overview", id:"weight", placeholder:"体重（半角）cm", maxlength:"3" %>  
-                              </div>
-                              <div class="col-md-4 mt-2">
-                                <%= f.text_field :abdominal_circumference, class:"input-default form-control form-control-user overview", id:"abdominal_cicumference", placeholder:"腹囲（半角）cm", maxlength:"3" %>
+                              <div class="row">
+                                <div class="col-md-4 mt-2">
+                                  <%= f.text_field :height, class:"input-default form-control form-control-user overview", id:"height", placeholder:"身長（半角）cm", maxlength:"3" %> 
+                                </div>                             
+                                <div class="col-md-4 mt-2">
+                                  <%= f.text_field :weight, class:"input-default form-control form-control-user overview", id:"weight", placeholder:"体重（半角）cm", maxlength:"3" %>  
+                                </div>
+                                <div class="col-md-4 mt-2">
+                                  <%= f.text_field :abdominal_circumference, class:"input-default form-control form-control-user overview", id:"abdominal_cicumference", placeholder:"腹囲（半角）cm", maxlength:"3" %>
+                                </div>
                               </div>
                           </div>
 
@@ -55,7 +56,7 @@
                           </div>
                           <div class="form-group ml-4">
                               <div class='input-date-wrap'>
-                                <label class="col-sm-12 col-md-2">測定日</label>
+                                <label class="col-sm-12 col-md-2 mr-4">測定日</label>
                                 <%= raw sprintf(
                                               f.date_select(
                                                 :blood_urine_test_date,
@@ -64,8 +65,8 @@
                                                 start_year: (Time.now.year),
                                                 end_year: 2000,
                                                 date_separator: '%s'),
-                                              "<p class='col-sm-12 col-md-1'> 年 </p>", "<p class='col-sm-12 col-md-1'> 月 </p>",) + "<p class='col-sm-12 col-md-1'> 日 </p>" %>
-                              </div>                                
+                                              "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
+                              </div>                                 
                               <div class="btn btn-light btn-icon-split mt-2 blood-urine-test">  
                                 <label class="text">画像を選択
                                     <%= f.file_field :image, id:"item-image", style:"display:none" %>
