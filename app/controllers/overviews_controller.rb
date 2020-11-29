@@ -19,6 +19,6 @@ class OverviewsController < ApplicationController
   private
 
   def overview_params
-    params.require(:overview).permit(:measuring_date, :weight, :height, :abdominal_circumference).merge(user_id: current_user.id)
+    params.require(:overview).permit(:physicalfinding_measuring_date, :weight, :height, :abdominal_circumference,:blood_urine_test_date, :image).merge(user_id: current_user.id)
   end
 end
