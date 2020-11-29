@@ -55,7 +55,7 @@
                           </div>
                           <div class="form-group ml-4">
                               <div class='input-date-wrap'>
-                                <label class="mr-4">測定日</label>
+                                <label class="col-sm-12 col-md-2">測定日</label>
                                 <%= raw sprintf(
                                               f.date_select(
                                                 :blood_urine_test_date,
@@ -64,10 +64,15 @@
                                                 start_year: (Time.now.year),
                                                 end_year: 2000,
                                                 date_separator: '%s'),
-                                              "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
+                                              "<p class='col-sm-12 col-md-1'> 年 </p>", "<p class='col-sm-12 col-md-1'> 月 </p>",) + "<p class='col-sm-12 col-md-1'> 日 </p>" %>
                               </div>                                
+                              <div class="btn btn-light btn-icon-split mt-2 blood-urine-test">  
+                                <label class="text">画像を選択
+                                    <%= f.file_field :image, id:"item-image", style:"display:none" %>
+                                </label>
+                              </div>
                           </div>
-                            <%= f.file_field :image, id:"item-image" %>
+                          
                           
                             <%= f.submit "登録" ,class:"rbtn btn-primary btn-user btn-block" %>
                             <hr>
