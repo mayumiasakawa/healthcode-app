@@ -29,7 +29,7 @@
                         </span>
 
                         <% @overviews.each do |overview| %>
-                          <% if overview.present?  && overview.user_id==current_user.id %>                                  
+                          <% if overview.present? && overview.physicalfinding_measuring_date.present? && overview.user_id==current_user.id %>                                  
                                 <div class="font-weight-bold text-uppercase mt-2 mb-2">
                                         測定日 <%= overview.physicalfinding_measuring_date %>
                                 </div>
