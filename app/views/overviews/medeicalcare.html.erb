@@ -13,49 +13,51 @@
          <div id="content">
             <%= render "shared/header" %>
 
-            <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">最新情報</h1>
-                </div>
-
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="card border-left-success shadow h-100 py-2 md-12 mb-4">
-                    <div class="card-body">
-                        <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                受診歴
-                        </span>
-
-                        <% @overviews.each do |overview| %>
-                          <% if overview.present? && overview.medeical_care_date.present? && overview.user_id==current_user.id %>                                  
-                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                        測定日 <%= overview.medeical_care_date %>
-                                </div>
-                                <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                    病院名
-                                </span>
-                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= overview.clinic_name %>
-                                </span>
-                                <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                    病名・診断
-                                </span>
-                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= overview.disease_name %>
-                                </span>
-                                <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                    処置・薬
-                                </span>
-                                <span class="h5 mb-0 font-weight-bold text-gray-800">
-                                    <%= overview.treatment_medicine %>
-                                </span>
-                          <% end %>
-                        <% end %>
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h3 class="m-0 font-weight-bold text-primary">受診歴</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>受診日</th>
+                                            <th>病院名</th>
+                                            <th>病名・診断名</th>
+                                            <th>処置・薬</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>受診日</th>
+                                            <th>病院名</th>
+                                            <th>病名・診断名</th>
+                                            <th>処置・薬</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <% @overviews.each do |overview| %>
+                                        <% if overview.present? && overview.medeical_care_date.present? && overview.user_id==current_user.id %> 
+                                            <tr>
+                                                <td><%= overview.medeical_care_date %></td>
+                                                <td><%= overview.clinic_name %></td>
+                                                <td><%= overview.disease_name %></td>
+                                                <td><%= overview.treatment_medicine %></td>
+                                            </tr>    
+                                        <% end %>
+                                        <% end %>                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
-            </div>     
+                <!-- /.container-fluid -->    
     </div>
 <% end %>
     <!-- End of Main Content -->
