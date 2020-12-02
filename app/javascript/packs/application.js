@@ -17,3 +17,7 @@ require('./preview')
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/highstock
