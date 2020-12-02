@@ -27,8 +27,13 @@ class OverviewsController < ApplicationController
   def physicalfinding
     @overviews = Overview.order(physicalfinding_measuring_date: :desc)
   end
+
   def bloodurine
     @overviews = Overview.order(blood_urine_test_date: :desc)
+  end
+
+  def medeicalcare
+    @overviews = Overview.order(medeical_care_date: :desc)
   end
 
   private
