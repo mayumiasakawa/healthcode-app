@@ -36,6 +36,10 @@ class OverviewsController < ApplicationController
     @overviews = Overview.order(medeical_care_date: :desc)
   end
 
+  def vaccine
+    @overviews = Overview.order(vaccine_date: :desc)
+  end
+
   private
 
   def overview_params

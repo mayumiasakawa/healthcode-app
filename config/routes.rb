@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'physicalfinding'
       get 'bloodurine'
       get 'medeicalcare'
+      get 'vaccine'
     end
   end
 end
