@@ -30,7 +30,4 @@ class Vaccine < ActiveHash::Base
    { id: 28, name: 'ロタウイルス：5価' }
  ]
 
- include ActiveHash::Associations
-  has_many :overviews
-
 end
