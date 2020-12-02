@@ -1,9 +1,3 @@
-<% @overviews.each do |overview| %>
-    <% if overview.bmi.blank? %>
-        <p>Bmi空です</p>
-        <% end %>
-<% end %>
-
 <% unless user_signed_in? %>
     <div class="bg-gradient-primary">
        <div class="container">
