@@ -28,7 +28,8 @@
                                 身長・体重・腹囲
                         </span>
 
-                        <% @overviews.each do |overview| %>                                        
+                        <% @overviews.each do |overview| %>
+                          <% if overview.present?  && overview.user_id==current_user.id %>                                  
                                 <div class="font-weight-bold text-uppercase mt-2 mb-2">
                                         測定日 <%= overview.physicalfinding_measuring_date %>
                                 </div>
@@ -50,6 +51,7 @@
                                 <span class="h5 mb-0 font-weight-bold text-gray-800">
                                     <%= overview.abdominal_circumference %> cm                                          
                                 </span>
+                          <% end %>
                         <% end %>
                     </div>
                 </div>
