@@ -25,21 +25,18 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <%= link_to 'データ登録',  new_overview_path, class: "nav-link collapsed" %>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
+        </li>
+        
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+        
+        <!-- Heading -->
+        <div class="sidebar-heading">
         Show
-    </div>
-
+        </div>
     <!-- Nav Item -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>身体特徴</span></a>
+        <%= link_to '身体特徴',   physicalfinding_overviews_path, class: "nav-link collapsed" %>
     </li>
 
     <!-- Nav Item -->

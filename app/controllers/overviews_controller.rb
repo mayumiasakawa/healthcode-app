@@ -22,6 +22,10 @@ class OverviewsController < ApplicationController
     end
   end
 
+  def physicalfinding
+    @overviews = Overview.order(physicalfinding_measuring_date: :desc)
+  end
+
   private
 
   def overview_params

@@ -1,4 +1,4 @@
-<%# ログインしていない時 %>
+
 <% unless user_signed_in? %>
     <div class="bg-gradient-primary">
        <div class="container">
@@ -34,9 +34,9 @@
        </div>
     </div>
 <% end %>
+
 <div  id="page-top">
 
-<%# ログインしている時 %>
 <% if user_signed_in? %>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -64,36 +64,34 @@
                         <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                 身長・体重・腹囲
                         </span>
-                        <% if @overview_physicalfinding_measurings.blank? %>
+                        <% if @overview_physicalfinding_measuring.blank? %>
                             <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                                 データを登録してね！
                             </p>
-                        <% end %>
-                        <% if @overview_physicalfinding_measurings.present? %>
-                            <% @overview_physicalfinding_measurings.each do |overview_physicalfinding_measuring| %>                                                             
-                                <div class="font-weight-bold text-uppercase mb-2">
-                                        最新測定日 <%= overview_physicalfinding_measuring.physicalfinding_measuring_date %>
+                        
+                            <% elsif @overview_physicalfinding_measuring.present? %>                                                         
+                                <div class="font-weight-bold text-uppercase mt-2mb-2">
+                                        最新測定日 <%= @overview_physicalfinding_measuring.physicalfinding_measuring_date %>
                                 </div>
                                 <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                     身長
                                 </span>
                                 <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= overview_physicalfinding_measuring.height %> cm                                          
+                                    <%= @overview_physicalfinding_measuring.height %> cm                                          
                                 </span>
                                 <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                     体重
                                 </span>
                                 <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= overview_physicalfinding_measuring.weight %> kg                                             
+                                    <%= @overview_physicalfinding_measuring.weight %> kg                                             
                                 </span>
                                 <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                     腹囲
                                 </span>
                                 <span class="h5 mb-0 font-weight-bold text-gray-800">
-                                    <%= overview_physicalfinding_measuring.abdominal_circumference %> cm                                          
+                                    <%= @overview_physicalfinding_measuring.abdominal_circumference %> cm                                          
                                 </span>
-                            <% end %>
-                    <% end %>
+                        <% end %>
                     </div>
                 </div>             
                 
@@ -107,8 +105,7 @@
                                 <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                                     データを登録してね！
                                 </p>
-                            <% end %>
-                            <% if @overview_blood_urine_test.present? %>
+                            <% elsif @overview_blood_urine_test.present? %>
                                 <div class="font-weight-bold text-uppercase mt-2 mb-2">
                                         最新測定日 <%= @overview_blood_urine_test.blood_urine_test_date %>
                                 </div>                                                               
@@ -129,8 +126,7 @@
                             <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                                 データを登録してね！
                             </p>
-                        <% end %>
-                        <% if @overview_medeical_cares.present? %>
+                        <% elsif @overview_medeical_cares.present? %>
                             <% @overview_medeical_cares.each do |overview_medeical_care| %>
                                 <div class="font-weight-bold text-uppercase mt-2 mb-2">
                                     受診日 <%= overview_medeical_care.medeical_care_date %>
@@ -159,8 +155,7 @@
                             <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                                 データを登録してね！
                             </p>
-                        <% end %>
-                        <% if @overview_vaccines.present? %>
+                        <% elsif @overview_vaccines.present? %>
                             <% @overview_vaccines.each do |overview_vaccine| %>
                                 <div class="font-weight-bold text-uppercase mt-2 mb-2">
                                     接種日 <%= overview_vaccine.vaccine_date %>
