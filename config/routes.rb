@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :overviews do
     collection do
       get 'physicalfinding'
+      get 'bloodurine'
     end
   end
 end
