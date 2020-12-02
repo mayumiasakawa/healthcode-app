@@ -2,6 +2,10 @@ class OverviewsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
+    @overview_physicalfinding_measuring = Overview.order(physicalfinding_measuring_date: :desc).first
+    @overview_blood_urine_test = Overview.order(blood_urine_test_date: :desc).first
+    @overview_medeical_cares = Overview.order(medeical_care_date: :desc).first(3)
+    @overview_vaccines = Overview.order(vaccine_date: :desc).first(3)
   end
 
   def new

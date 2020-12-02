@@ -10,150 +10,99 @@
          <!-- Main Content -->
          <div id="content">
 
-         <%= render "shared/header" %>
+             <%= render "shared/header" %>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                <!-- Page Heading -->
+                    <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Latest Information 2020/11/15</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Latest Information</h1>
                     </div>
 
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                年齢</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">年齢</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="card border-left-success shadow h-100 py-2 md-12 mb-4">
+                        <div class="card-body">
+                            <div class="font-weight-bold text-uppercase mb-2">
+                                    最新測定日 <%= @overview_physicalfinding_measuring.physicalfinding_measuring_date %>
+                            </div>                                                               
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                身長
+                            </span>
+                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                <%= @overview_physicalfinding_measuring.height %> cm                                          
+                            </span>
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                体重
+                            </span>
+                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                <%= @overview_physicalfinding_measuring.weight %> kg                                             
+                            </span>
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                腹囲
+                            </span>
+                            <span class="h5 mb-0 font-weight-bold text-gray-800">
+                                <%= @overview_physicalfinding_measuring.abdominal_circumference %> cm                                          
+                            </span>
                         </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                身長・体重・BMI</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">身長・体重・BMI</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">腹囲
-                                            </div>
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">腹囲</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                血圧</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">血圧</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Content Row -->
-
+                    </div>             
                     
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- 採血結果 -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">採血結果</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>画像結果を貼る</p>
-                                    <p>または グラフにする</p>
-                                </div>
+                    <!-- Earnings (Monthly) Card Example -->
+                        <div class="card border-left-info shadow h-100 py-2 md-12 mb-4">
+                            <div class="card-body">
+                                <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                    採血・採尿
+                                </span>
+                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
+                                        最新測定日 <%= @overview_blood_urine_test.blood_urine_test_date %>
+                                </div>                                                               
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= image_tag @overview_blood_urine_test.image.variant(resize: '500x500'), class: 'message-image' if @overview_blood_urine_test.image.attached? %>                                         
+                                </span>
                             </div>
-                        </div>
-
-                        <div class="col-lg-6 mb-4">
-
-                            <!-- 受診歴 -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">受診歴</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"
-                                            src="img/undraw_posting_photo.svg" alt="">
-                                    </div>
-                                    <p>最新3〜5つほど</p>x
-                                </div>
-                            </div>
-
-                            <!-- ワクチン接種歴 -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">ワクチン接種歴</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>最新3〜5つほど</p>
-                                </div>
-                            </div>
-
+                        </div>            
+                            
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="card border-left-warning shadow h-100 py-2 md-12 mb-4">
+                        <div class="card-body">
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                受診歴
+                            </span>
+                            <% @overview_medeical_cares.each do |overview_medeical_care| %>
+                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
+                                    受診日 <%= overview_medeical_care.medeical_care_date %>
+                                </div>                                                               
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= overview_medeical_care.clinic_name %>
+                                </span>
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= overview_medeical_care.disease_name %>                                       
+                                </span>
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= overview_medeical_care.treatment_medicine %>                                       
+                                </span>
+                            <% end %>
                         </div>
                     </div>
 
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="card border-left-danger shadow h-100 py-2 md-12 mb-4">
+                        <div class="card-body">
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                ワクチン接種歴
+                            </span>
+                            <% @overview_vaccines.each do |overview_vaccine| %>
+                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
+                                    接種日 <%= overview_vaccine.vaccine_date %>
+                                </div>                                                               
+                                <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                    <%= overview_vaccine.vaccine.name %>
+                                </span>
+                            <% end %>
+                        </div>
+                    </div>  
                 </div>
-                <!-- /.container-fluid -->
-
-            </div>
+        </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
