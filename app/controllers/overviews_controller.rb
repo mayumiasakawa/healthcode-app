@@ -26,6 +26,20 @@ class OverviewsController < ApplicationController
 
   def physicalfinding
     @overviews = Overview.order(physicalfinding_measuring_date: :desc)
+  
+    physicalfinding_measuring_date = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:physicalfinding_measuring_date)
+    weight = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:weight)
+    abdominal_circumference = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:abdominal_circumference)
+
+    @chart = LazyHighCharts::HighChart.new("graph") do |c|
+      # c.title(text: "体重・腹囲 推移")
+      c.xAxis(categories: physicalfinding_measuring_date, title: {text: '測定日'})
+      c.yAxis(title: {text: 'kg / cm'})
+      c.series(name: "腹囲 cm", data: abdominal_circumference)
+      c.series(name: "体重 kg", data: weight)
+
+  end
+
   end
 
   def bloodurine
