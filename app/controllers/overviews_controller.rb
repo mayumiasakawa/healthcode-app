@@ -29,6 +29,7 @@ class OverviewsController < ApplicationController
   
     physicalfinding_measuring_date = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:physicalfinding_measuring_date)
     weight = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:weight)
+    bmi = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:bmi)
     abdominal_circumference = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:abdominal_circumference)
 
     @chart = LazyHighCharts::HighChart.new("graph") do |c|
@@ -37,6 +38,7 @@ class OverviewsController < ApplicationController
       c.yAxis(title: {text: 'kg / cm'})
       c.series(name: "腹囲 cm", data: abdominal_circumference)
       c.series(name: "体重 kg", data: weight)
+      c.series(name: "BMI", data: bmi)
 
   end
 
@@ -57,7 +59,7 @@ class OverviewsController < ApplicationController
   private
 
   def overview_params
-    params.require(:overview).permit(:physicalfinding_measuring_date, :weight, :height, :abdominal_circumference,:blood_urine_test_date, :image,:medeical_care_date, :clinic_name, :disease_name, :treatment_medicine, :vaccine_date, :vaccine_id).merge(user_id: current_user.id)
+    params.require(:overview).permit(:physicalfinding_measuring_date, :weight, :height, :abdominal_circumference,:bmi, :blood_urine_test_date, :image,:medeical_care_date, :clinic_name, :disease_name, :treatment_medicine, :vaccine_date, :vaccine_id).merge(user_id: current_user.id)
   end
 
   def move_to_index

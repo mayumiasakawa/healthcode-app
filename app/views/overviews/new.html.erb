@@ -14,10 +14,9 @@
 
             <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-lg-10">
-                    <div class="pl-5 pt-3">
+                    <div class="p-5 pt-3">
     
-                        <%= form_with model: @overview, url: overviews_path, class: 'user', local: true do |f| %> 
+                        <%= form_with model: @overview, url: overviews_path, class: 'user',name: 'form', local: true do |f| %> 
                         
                         <div class="card card-body border-left-success mb-3 py-3">
                           <div class="h5 m-3">
@@ -37,14 +36,17 @@
                                               "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
                               </div>                                
                               <div class="row">
-                                <div class="col-md-4 mt-2">
+                                <div class="col-md-6 mt-2">
                                   <%= f.text_field :height, class:"input-default form-control form-control-user overview", id:"height", placeholder:"身長（半角）cm", maxlength:"3" %> 
                                 </div>                             
-                                <div class="col-md-4 mt-2">
+                                <div class="col-md-6 mt-2">
                                   <%= f.text_field :weight, class:"input-default form-control form-control-user overview", id:"weight", placeholder:"体重（半角）cm", maxlength:"3" %>  
                                 </div>
-                                <div class="col-md-4 mt-2">
+                                <div class="col-md-6 mt-2">
                                   <%= f.text_field :abdominal_circumference, class:"input-default form-control form-control-user overview", id:"abdominal_cicumference", placeholder:"腹囲（半角）cm", maxlength:"3" %>
+                                </div>
+                                <div class="col-md-6 mt-2" >
+                                  <%= f.text_field :bmi, class:"input-default form-control form-control-user overview", id:"bmi-form", placeholder:"BMI 自動で計算されます", maxlength:"3" %>
                                 </div>
                               </div>
                           </div>
@@ -133,12 +135,10 @@
                               </div>
                           </div>
                         </div>
-                          
                             <%= f.submit "登録" ,class:"rbtn btn-primary btn-user btn-block" %>
-                            <hr>
                         <% end %>
                     </div>
-                </div>
+                
             </div>
         </div>
     </div>
