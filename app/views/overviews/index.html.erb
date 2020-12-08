@@ -1,4 +1,3 @@
-<%# ログインしていない時 %>
 <% unless user_signed_in? %>
     <div class="bg-gradient-primary">
        <div class="container">
@@ -34,9 +33,9 @@
        </div>
     </div>
 <% end %>
+
 <div  id="page-top">
 
-<%# ログインしている時 %>
 <% if user_signed_in? %>
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -55,33 +54,43 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Latest Information</h1>
+                    <h1 class="h3 mb-0 text-gray-800">最新情報</h1>
                 </div>
 
                 <!-- Earnings (Monthly) Card Example -->
                 <div class="card border-left-success shadow h-100 py-2 md-12 mb-4">
                     <div class="card-body">
-                        <div class="font-weight-bold text-uppercase mb-2">
-                                最新測定日 <%= @overview_physicalfinding_measuring.physicalfinding_measuring_date %>
-                        </div>                                                               
                         <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                            身長
-                        </span>
-                        <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                            <%= @overview_physicalfinding_measuring.height %> cm                                          
-                        </span>
-                        <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                            体重
-                        </span>
-                        <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                            <%= @overview_physicalfinding_measuring.weight %> kg                                             
-                        </span>
-                        <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                            腹囲
-                        </span>
-                        <span class="h5 mb-0 font-weight-bold text-gray-800">
-                            <%= @overview_physicalfinding_measuring.abdominal_circumference %> cm                                          
-                        </span>
+                                身長・体重・腹囲
+                        </span>               
+                        <% if @overview_physicalfinding_measuring.present? && @overview_physicalfinding_measuring.user_id==current_user.id %>                                                      
+                            <div class="font-weight-bold text-uppercase mt-2mb-2">
+                                    最新測定日 <%= @overview_physicalfinding_measuring.physicalfinding_measuring_date %>
+                            </div>
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                身長
+                            </span>
+                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                <%= @overview_physicalfinding_measuring.height %> cm                                          
+                            </span>
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                体重
+                            </span>
+                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                <%= @overview_physicalfinding_measuring.weight %> kg                                             
+                            </span>
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                腹囲
+                            </span>
+                            <span class="h5 mb-0 font-weight-bold text-gray-800">
+                                <%= @overview_physicalfinding_measuring.abdominal_circumference %> cm                                          
+                            </span>
+
+                            <% elsif @overview_physicalfinding_measuring.blank? %>
+                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                データを登録してね！
+                                </p>
+                        <% end %>
                     </div>
                 </div>             
                 
@@ -91,12 +100,18 @@
                             <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                 採血・採尿
                             </span>
-                            <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                    最新測定日 <%= @overview_blood_urine_test.blood_urine_test_date %>
-                            </div>                                                               
-                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                <%= image_tag @overview_blood_urine_test.image.variant(resize: '500x500'), class: 'message-image' if @overview_blood_urine_test.image.attached? %>                                         
-                            </span>
+                            <% if @overview_blood_urine_test.present? && @overview_blood_urine_test.user_id==current_user.id %>
+                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
+                                        最新測定日 <%= @overview_blood_urine_test.blood_urine_test_date %>
+                                </div>                                                               
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= image_tag @overview_blood_urine_test.image.variant(resize: '500x500'), class: 'message-image' if @overview_blood_urine_test.image.attached? %>                                         
+                                </span>
+                            <% elsif @overview_blood_urine_test.blank? %>
+                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                    データを登録してね！
+                                </p>
+                            <% end %>
                         </div>
                     </div>            
                         
@@ -107,18 +122,24 @@
                             受診歴
                         </span>
                         <% @overview_medeical_cares.each do |overview_medeical_care| %>
-                            <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                受診日 <%= overview_medeical_care.medeical_care_date %>
-                            </div>                                                               
-                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                <%= overview_medeical_care.clinic_name %>
-                            </span>
-                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                <%= overview_medeical_care.disease_name %>                                       
-                            </span>
-                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                <%= overview_medeical_care.treatment_medicine %>                                       
-                            </span>
+                            <% if overview_medeical_care.present? && overview_medeical_care.user_id==current_user.id %>
+                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
+                                    受診日 <%= overview_medeical_care.medeical_care_date %>
+                                </div>                                                               
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= overview_medeical_care.clinic_name %>
+                                </span>
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= overview_medeical_care.disease_name %>                                       
+                                </span>
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= overview_medeical_care.treatment_medicine %>                                       
+                                </span>
+                            <% elsif @overview_medeical_cares.blank? %>
+                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                    データを登録してね！
+                                </p>
+                            <% end %>
                         <% end %>
                     </div>
                 </div>
@@ -130,12 +151,18 @@
                             ワクチン接種歴
                         </span>
                         <% @overview_vaccines.each do |overview_vaccine| %>
-                            <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                接種日 <%= overview_vaccine.vaccine_date %>
-                            </div>                                                               
-                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                <%= overview_vaccine.vaccine.name %>
-                            </span>
+                            <% if overview_vaccine.present?  && overview_vaccine.user_id==current_user.id %>
+                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
+                                    接種日 <%= overview_vaccine.vaccine_date %>
+                                </div>                                                               
+                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                    <%= overview_vaccine.vaccine.name %>
+                                </span>
+                            <% elsif @overview_vaccines.blank? %>
+                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                    データを登録してね！
+                                </p>
+                            <% end %>
                         <% end %>
                     </div>
                 </div>

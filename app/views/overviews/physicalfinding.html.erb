@@ -1,0 +1,111 @@
+<div  id="page-top">
+
+<% if user_signed_in? %>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+    <%= render "shared/sidebar" %>
+
+     <!-- Content Wrapper -->
+     <div id="content-wrapper" class="d-flex flex-column">
+
+         <!-- Main Content -->
+         <div id="content">
+            <%= render "shared/header" %>
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+              <!-- DataTales Example -->
+              <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                      <h3 class="m-0 font-weight-bold text-primary">身長・体重・腹囲</h3>
+                  </div>
+                  <div class="card-body">
+                      <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <thead>
+                                  <tr>
+                                      <th>測定日</th>
+                                      <th>身長 cm</th>
+                                      <th>体重 cm</th>
+                                      <th>腹囲 cm</th>
+                                      <th>BMI</th>
+                                  </tr>
+                              </thead>
+                              <tfoot>
+                                  <tr>
+                                      <th>測定日</th>
+                                      <th>身長 cm</th>
+                                      <th>体重 cm</th>
+                                      <th>腹囲 cm</th>
+                                      <th>BMI</th>
+                                  </tr>
+                              </tfoot>
+                              <tbody>
+                                <% @overviews.each do |overview| %>
+                                  <% if overview.present? && overview.physicalfinding_measuring_date.present? && overview.user_id==current_user.id %> 
+                                  <div class="m-5">
+                                    <%= high_chart("my_chart", @chart) %>
+                                  </div>
+                                    <tr>
+                                        <td><%= overview.physicalfinding_measuring_date %></td>
+                                        <td><%= overview.height %></td>
+                                        <td><%= overview.weight %></td>
+                                        <td><%= overview.abdominal_circumference %></td>
+                                        <td><%= overview.bmi %></td>
+                                    </tr>    
+                                  <% end %>
+                                <% end %>                                    
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+
+                </div>
+              <!-- /.container-fluid -->    
+    </div>
+<% end %>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2020</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
