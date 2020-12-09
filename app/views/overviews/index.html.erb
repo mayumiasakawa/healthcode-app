@@ -59,37 +59,21 @@
 
                 <!-- Earnings (Monthly) Card Example -->
                 <div class="card border-left-success shadow h-100 py-2 md-12 mb-4">
-                    <div class="card-body">              
-                        <% if @overview_physicalfinding_measuring.present? && @overview_physicalfinding_measuring.user_id==current_user.id %>                                                      
-                            <div class="font-weight-bold text-uppercase mt-2mb-2">
-                                    最新測定日 <%= @overview_physicalfinding_measuring.physicalfinding_measuring_date %>
+                    <div class="card-body">
+                        <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                体重・腹囲・BMI
+                        </span>
+                        <% if @overview_physicalfinding_measuring.present? && @overview_physicalfinding_measuring.user_id==current_user.id %> 
+                            <div class="m-5">
+                                <%= high_chart("my_chart", @chart) %>
                             </div>
-                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                身長
-                            </span>
-                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                <%= @overview_physicalfinding_measuring.height %> cm                                          
-                            </span>
-                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                体重
-                            </span>
-                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                <%= @overview_physicalfinding_measuring.weight %> kg                                             
-                            </span>
-                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                腹囲
-                            </span>
-                            <span class="h5 mb-0 font-weight-bold text-gray-800">
-                                <%= @overview_physicalfinding_measuring.abdominal_circumference %> cm                                          
-                            </span>
-
-                            <% elsif @overview_physicalfinding_measuring.blank? %>
-                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                        <% elsif @overview_physicalfinding_measuring.blank? %>
+                            <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                                 データを登録してね！
-                                </p>
-                        <% end %>
+                            </p>
+                        <% end %> 
                     </div>
-                </div>             
+                </div>            
                 
                 <!-- Earnings (Monthly) Card Example -->
                     <div class="card border-left-info shadow h-100 py-2 md-12 mb-4">
@@ -115,29 +99,37 @@
                 <!-- Earnings (Monthly) Card Example -->
                 <div class="card border-left-warning shadow h-100 py-2 md-12 mb-4">
                     <div class="card-body">
-                        <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                        <span class="h5 font-weight-bold text-uppercase mb-2">
                             受診歴
                         </span>
-                        <% @overview_medeical_cares.each do |overview_medeical_care| %>
-                            <% if overview_medeical_care.present? && overview_medeical_care.user_id==current_user.id %>
-                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                    受診日 <%= overview_medeical_care.medeical_care_date %>
-                                </div>                                                               
-                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= overview_medeical_care.clinic_name %>
-                                </span>
-                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= overview_medeical_care.disease_name %>                                       
-                                </span>
-                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= overview_medeical_care.treatment_medicine %>                                       
-                                </span>
-                            <% elsif @overview_medeical_cares.blank? %>
-                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
-                                    データを登録してね！
-                                </p>
-                            <% end %>
-                        <% end %>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>病院名</th>
+                                        <th>病名・診断名</th>
+                                        <th>処置・薬</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <% @overview_medeical_cares.each do |overview_medeical_care| %>
+                                    <% if overview_medeical_care.present? && overview_medeical_care.user_id==current_user.id %>
+                                        <tr>
+                                            <td><%= overview_medeical_care.medeical_care_date %></td>
+                                            <td><%= overview_medeical_care.clinic_name %></td>
+                                            <td><%= overview_medeical_care.disease_name %></td>
+                                            <td><%= overview_medeical_care.treatment_medicine %></td>
+                                        </tr>
+                                    <% elsif @overview_medeical_cares.blank? %>
+                                    <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                        データを登録してね！
+                                    </p>
+                                    <% end %>
+                                <% end %>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -147,24 +139,26 @@
                         <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                             ワクチン接種歴
                         </span>
-                        <% @overview_vaccines.each do |overview_vaccine| %>
-                            <% if overview_vaccine.present?  && overview_vaccine.user_id==current_user.id %>
-                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                    接種日 <%= overview_vaccine.vaccine_date %>
-                                </div>                                                               
-                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= overview_vaccine.vaccine.name %>
-                                </span>
-                            <% elsif @overview_vaccines.blank? %>
-                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
-                                    データを登録してね！
-                                </p>
-                            <% end %>
-                        <% end %>
-                    </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <tbody>
+                                <% @overview_vaccines.each do |overview_vaccine| %>
+                                    <% if overview_vaccine.present?  && overview_vaccine.user_id==current_user.id %>
+                                        <tr>
+                                            <td><%= overview_vaccine.vaccine_date %></td>
+                                            <td><%= overview_vaccine.vaccine.name %></td>
+                                        </tr>
+                                        <% elsif @overview_vaccines.blank? %>
+                                    <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                        データを登録してね！
+                                    </p>
+                                    <% end %>
+                                <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>     
                 </div>
-            </div>     
-    </div>
 <% end %>
     <!-- End of Main Content -->
 
@@ -178,10 +172,10 @@
     </footer>
     <!-- End of Footer -->
 
-</div>
+    </div>
 <!-- End of Content Wrapper -->
 
-    </div>
+</div>
     <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->

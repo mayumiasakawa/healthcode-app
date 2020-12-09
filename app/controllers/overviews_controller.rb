@@ -1,7 +1,8 @@
 class OverviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy, :physicalfinding, :bloodurine, :medeicalcare, :vaccine]
   before_action :move_to_index, except: [:index]
   before_action :set_overview, only: [:edit, :update, :destroy]
+  before_action :set_chart, only: [:index, :physicalfinding]
 
   def index
     @overviews = Overview.includes(:user).order("created_at DESC")
@@ -50,22 +51,6 @@ class OverviewsController < ApplicationController
 
   def physicalfinding
     @overviews = Overview.order(physicalfinding_measuring_date: :desc)
-  
-    physicalfinding_measuring_date = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:physicalfinding_measuring_date)
-    weight = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:weight)
-    bmi = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:bmi)
-    abdominal_circumference = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:abdominal_circumference)
-
-    @chart = LazyHighCharts::HighChart.new("graph") do |c|
-      # c.title(text: "体重・腹囲 推移")
-      c.xAxis(categories: physicalfinding_measuring_date, title: {text: '測定日'})
-      c.yAxis(title: {text: 'kg / cm'})
-      c.series(name: "腹囲 cm", data: abdominal_circumference)
-      c.series(name: "体重 kg", data: weight)
-      c.series(name: "BMI", data: bmi)
-
-  end
-
   end
 
   def bloodurine
@@ -94,6 +79,22 @@ class OverviewsController < ApplicationController
 
   def set_overview
     @overview = Overview.includes(:user).find(params[:id])
+  end
+
+  def set_chart
+    physicalfinding_measuring_date = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:physicalfinding_measuring_date)
+    weight = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:weight)
+    bmi = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:bmi)
+    abdominal_circumference = Overview.where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :asc).pluck(:abdominal_circumference)
+
+    @chart = LazyHighCharts::HighChart.new("graph") do |c|
+      # c.title(text: "体重・腹囲 推移")
+      c.xAxis(categories: physicalfinding_measuring_date, title: {text: '測定日'})
+      c.yAxis(title: {text: 'kg / cm'})
+      c.series(name: "腹囲 cm", data: abdominal_circumference)
+      c.series(name: "体重 kg", data: weight)
+      c.series(name: "BMI", data: bmi)
+    end
   end
 
 end
