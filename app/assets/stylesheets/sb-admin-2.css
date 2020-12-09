@@ -11287,7 +11287,10 @@ body.sidebar-toggled footer.sticky-footer {
   width :90%;
 }
 
-#image-list img{
+#image-list img,#image{
   width: 50%;
   height: 50%;
 }
+
+.table-edit-trash
+{width: 90px;}

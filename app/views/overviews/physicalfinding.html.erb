@@ -29,7 +29,8 @@
                                       <th>身長 cm</th>
                                       <th>体重 cm</th>
                                       <th>腹囲 cm</th>
-                                      <th>BMI</th>
+                                      <th class="table-bmi">BMI　  </th>
+                                      <th class="table-edit-trash"></th>
                                   </tr>
                               </thead>
                               <tfoot>
@@ -38,7 +39,8 @@
                                       <th>身長 cm</th>
                                       <th>体重 cm</th>
                                       <th>腹囲 cm</th>
-                                      <th>BMI</th>
+                                      <th>BMI　  </th>
+                                      <th></th>
                                   </tr>
                               </tfoot>
                               <tbody>
@@ -53,6 +55,14 @@
                                         <td><%= overview.weight %></td>
                                         <td><%= overview.abdominal_circumference %></td>
                                         <td><%= overview.bmi %></td>
+                                        <td>
+                                          <%= link_to edit_overview_path(overview.id), method: :get, class: 'btn btn-info btn-circle btn-sm' do%>
+                                            <i class="far fa-edit"></i>
+                                          <% end %>
+                                          <%= link_to overview_path(overview.id), method: :delete, class: 'btn btn-danger btn-circle btn-sm' do%>
+                                            <i class="fas fa-trash btn-sm"></i>
+                                          <% end %>
+                                        </td>
                                     </tr>    
                                   <% end %>
                                 <% end %>                                    

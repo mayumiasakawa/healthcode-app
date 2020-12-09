@@ -27,12 +27,14 @@
                                         <tr>
                                           <th>接種日</th>
                                           <th>ワクチン種類</th>
+                                          <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>接種日</th>
                                             <th>ワクチン種類</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -41,6 +43,14 @@
                                             <tr>
                                                 <td><%= overview.vaccine_date %></td>
                                                 <td><%= overview.vaccine.name %></td>
+                                                <td>
+                                                    <%= link_to edit_overview_path(overview.id), method: :get, class: 'btn btn-info btn-circle btn-sm' do%>
+                                                        <i class="far fa-edit"></i>
+                                                    <% end %>
+                                                    <%= link_to overview_path(overview.id), method: :delete, class: 'btn btn-danger btn-circle btn-sm' do%>
+                                                        <i class="fas fa-trash btn-sm"></i>
+                                                    <% end %>
+                                                </td>
                                             </tr>    
                                         <% end %>
                                         <% end %>                                    
