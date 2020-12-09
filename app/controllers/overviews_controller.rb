@@ -1,5 +1,5 @@
 class OverviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :move_to_index, except: [:index]
 
   def index
@@ -21,6 +21,23 @@ class OverviewsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def edit
+    @overview = Overview.find(params[:id])
+    unless current_user == @overview.user
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @overview = Overview.includes(:user).find(params[:id])
+    if @overview.update(overview_params)
+      @overview.save
+      redirect_to root_path
+    else
+      render :edit
     end
   end
 
