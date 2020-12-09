@@ -18,7 +18,9 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                   <h1 class="h3 mb-0 text-gray-800">編集</h1>
                 </div>
+
                   <%= form_with model: @overview, class: 'user',name: 'form', local: true do |f| %> 
+                    <%= render 'shared/error_messages', model: f.object %>
                   
                   <div class="card card-body border-left-success mb-3 py-3">
                     <div class="h5 m-3">
