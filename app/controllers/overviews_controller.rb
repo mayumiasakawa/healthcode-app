@@ -1,6 +1,7 @@
 class OverviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :move_to_index, except: [:index]
+  before_action :set_overview, only: [:edit, :update, :destroy]
 
   def index
     @overviews = Overview.includes(:user).order("created_at DESC")
@@ -25,19 +26,25 @@ class OverviewsController < ApplicationController
   end
 
   def edit
-    @overview = Overview.find(params[:id])
     unless current_user == @overview.user
       redirect_to root_path
     end
   end
 
   def update
-    @overview = Overview.includes(:user).find(params[:id])
     if @overview.update(overview_params)
       @overview.save
       redirect_to root_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @overview.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
@@ -83,6 +90,10 @@ class OverviewsController < ApplicationController
     unless user_signed_in?
       redirect_to action: :index
     end
+  end
+
+  def set_overview
+    @overview = Overview.includes(:user).find(params[:id])
   end
 
 end
