@@ -79,8 +79,14 @@
                             <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                 腹囲
                             </span>
-                            <span class="h5 mb-0 font-weight-bold text-gray-800">
+                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
                                 <%= @overview_physicalfinding_measuring.abdominal_circumference %> cm                                          
+                            </span>
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                BMI
+                            </span>
+                            <span class="h5 mb-0 font-weight-bold text-gray-800">
+                                <%= @overview_physicalfinding_measuring.bmi %>                                     
                             </span>
 
                             <% elsif @overview_physicalfinding_measuring.blank? %>
