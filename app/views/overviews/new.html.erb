@@ -24,7 +24,7 @@
                   
                   <div class="card card-body border-left-success mb-3 py-3">
                     <div class="h5 m-3">
-                      身長・体重・腹囲
+                      身長・体重・腹囲　・BMI
                     </div>
                     <div class="form-group ml-4">
                         <div class='input-date-wrap'>
@@ -58,7 +58,7 @@
 
                   <div class="card card-body border-left-info mb-3 py-3">
                     <div class="h5 m-3">
-                    採血・採尿
+                    採血・採尿・画像検査
                     </div>
                     <div class="form-group ml-4">
                         <div class='input-date-wrap'>
@@ -97,7 +97,7 @@
                           <label class="col-sm-12 col-md-2">受診日</label>
                           <%= raw sprintf(
                                         f.date_select(
-                                          :medeical_care_date,
+                                          :medical_care_date,
                                           use_month_numbers: true,
                                           prompt:'--',
                                           start_year: (Time.now.year),

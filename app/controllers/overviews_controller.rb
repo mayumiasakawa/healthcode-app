@@ -1,15 +1,14 @@
 class OverviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :destroy, :physicalfinding, :bloodurine, :medeicalcare, :vaccine]
+  before_action :authenticate_user!, only: [:new, :edit, :destroy, :physicalfinding, :bloodurine, :medicalcare, :vaccine]
   before_action :move_to_index, except: [:index]
   before_action :set_overview, only: [:edit, :update, :destroy]
   before_action :set_chart, only: [:index, :physicalfinding]
 
   def index
-    @overviews = Overview.includes(:user).order("created_at DESC")
-    @overview_physicalfinding_measuring = Overview.order(physicalfinding_measuring_date: :desc).first
-    @overview_blood_urine_test = Overview.order(blood_urine_test_date: :desc).first
-    @overview_medeical_cares = Overview.order(medeical_care_date: :desc).first(3)
-    @overview_vaccines = Overview.order(vaccine_date: :desc).first(3)
+    @overview_physicalfinding_measuring = Overview.includes(:user).order(physicalfinding_measuring_date: :desc).where(params[:id]).first
+    @overview_blood_urine_test = Overview.includes(:user).order(blood_urine_test_date: :desc).where(params[:id]).first
+    @overview_medical_cares = Overview.includes(:user).order(medical_care_date: :desc).where(params[:id]).first
+    @overview_vaccines = Overview.includes(:user).order(vaccine_date: :desc).where(params[:id]).first
   end
 
   def new
@@ -50,25 +49,25 @@ class OverviewsController < ApplicationController
   end
 
   def physicalfinding
-    @overviews = Overview.order(physicalfinding_measuring_date: :desc)
+    @overviews = Overview.includes(:user).order(physicalfinding_measuring_date: :desc)
   end
 
   def bloodurine
-    @overviews = Overview.order(blood_urine_test_date: :desc)
+    @overviews = Overview.includes(:user).order(blood_urine_test_date: :desc).where(params[:id])
   end
 
-  def medeicalcare
-    @overviews = Overview.order(medeical_care_date: :desc)
+  def medicalcare
+    @overviews = Overview.includes(:user).order(medical_care_date: :desc).where(params[:id])
   end
 
   def vaccine
-    @overviews = Overview.order(vaccine_date: :desc)
+    @overviews = Overview.includes(:user).order(vaccine_date: :desc).where(params[:id])
   end
 
   private
 
   def overview_params
-    params.require(:overview).permit(:physicalfinding_measuring_date, :weight, :height, :abdominal_circumference,:bmi, :blood_urine_test_date, :image,:medeical_care_date, :clinic_name, :disease_name, :treatment_medicine, :vaccine_date, :vaccine_id).merge(user_id: current_user.id)
+    params.require(:overview).permit(:physicalfinding_measuring_date, :weight, :height, :abdominal_circumference,:bmi, :blood_urine_test_date, :image,:medical_care_date, :clinic_name, :disease_name, :treatment_medicine, :vaccine_date, :vaccine_id).merge(user_id: current_user.id).merge(user_id: current_user.id)
   end
 
   def move_to_index

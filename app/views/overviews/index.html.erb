@@ -67,7 +67,7 @@
                             <div class="m-5">
                                 <%= high_chart("my_chart", @chart) %>
                             </div>
-                        <% elsif @overview_physicalfinding_measuring.blank? %>
+                        <% else %>
                             <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                                 データを登録してね！
                             </p>
@@ -88,7 +88,7 @@
                                 <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
                                     <%= image_tag @overview_blood_urine_test.image.variant(resize: '500x500'), class: 'message-image' if @overview_blood_urine_test.image.attached? %>                                         
                                 </span>
-                            <% elsif @overview_blood_urine_test.blank? %>
+                            <% else %>
                                 <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                                     データを登録してね！
                                 </p>
@@ -100,36 +100,35 @@
                 <div class="card border-left-warning shadow h-100 py-2 md-12 mb-4">
                     <div class="card-body">
                         <span class="h5 font-weight-bold text-uppercase mb-2">
-                            受診歴
+                            最終受診歴
                         </span>
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>病院名</th>
-                                        <th>病名・診断名</th>
-                                        <th>処置・薬</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <% @overview_medeical_cares.each do |overview_medeical_care| %>
-                                    <% if overview_medeical_care.present? && overview_medeical_care.user_id==current_user.id %>
+
+                        <% if @overview_medical_cares.present? && @overview_medical_cares.user_id==current_user.id %>                
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
                                         <tr>
-                                            <td><%= overview_medeical_care.medeical_care_date %></td>
-                                            <td><%= overview_medeical_care.clinic_name %></td>
-                                            <td><%= overview_medeical_care.disease_name %></td>
-                                            <td><%= overview_medeical_care.treatment_medicine %></td>
+                                            <th></th>
+                                            <th>病院名</th>
+                                            <th>病名・診断名</th>
+                                            <th>処置・薬</th>
                                         </tr>
-                                    <% elsif @overview_medeical_cares.blank? %>
-                                    <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
-                                        データを登録してね！
-                                    </p>
-                                    <% end %>
-                                <% end %>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><%= @overview_medical_cares.medical_care_date %></td>
+                                            <td><%= @overview_medical_cares.clinic_name %></td>
+                                            <td><%= @overview_medical_cares.disease_name %></td>
+                                            <td><%= @overview_medical_cares.treatment_medicine %></td>     
+                                        </tr> 
+                                    </tbody>
+                                </table>
+                            </div>
+                        <% else %>
+                            <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                データを登録してね！
+                            </p>    
+                        <% end %> 
                     </div>
                 </div>
 
@@ -137,26 +136,24 @@
                 <div class="card border-left-danger shadow h-100 py-2 md-12 mb-4">
                     <div class="card-body">
                         <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                            ワクチン接種歴
+                            最終ワクチン接種歴
                         </span>
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <tbody>
-                                <% @overview_vaccines.each do |overview_vaccine| %>
-                                    <% if overview_vaccine.present?  && overview_vaccine.user_id==current_user.id %>
+                        <% if @overview_vaccines.present?  && @overview_vaccines.user_id==current_user.id %>   
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <tbody>
                                         <tr>
-                                            <td><%= overview_vaccine.vaccine_date %></td>
-                                            <td><%= overview_vaccine.vaccine.name %></td>
+                                            <td><%= @overview_vaccines.vaccine_date %></td>
+                                            <td><%= @overview_vaccines.vaccine.name %></td>
                                         </tr>
-                                        <% elsif @overview_vaccines.blank? %>
-                                    <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
-                                        データを登録してね！
-                                    </p>
-                                    <% end %>
-                                <% end %>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <% else %>
+                            <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                データを登録してね！
+                            </p>      
+                        <% end %>
                     </div>     
                 </div>
 <% end %>

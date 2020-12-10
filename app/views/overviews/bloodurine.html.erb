@@ -20,22 +20,28 @@
                 <h3 class="m-0 font-weight-bold text-primary">採血・採尿・画像検査</h3>
                 </div>
                 <div class="card-body">
-                    <% @overviews.each do |overview| %>
-                        <% if overview.present? && overview.blood_urine_test_date.present? && overview.user_id==current_user.id %>                                  
-                            <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                    測定日 <%= overview.blood_urine_test_date %>
-                                    <%= link_to edit_overview_path(overview.id), method: :get, class: 'btn btn-info btn-circle btn-sm' do%>
-                                        <i class="far fa-edit"></i>
-                                    <% end %>
-                                    <%= link_to overview_path(overview.id), method: :delete, class: 'btn btn-danger btn-circle btn-sm' do%>
-                                        <i class="fas fa-trash btn-sm"></i>
-                                    <% end %>
-                            </div>
-                            <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                <%= image_tag overview.image.variant(resize: '500x500') %>                                                                           
-                            </span>
-                            <hr class="sidebar-divider">
-                        <% end %>
+                    <% if @overviews.where(user_id: current_user.id).present? && @overviews.present? %>
+                            <% @overviews.each do |overview| %>
+                                <% if current_user.id == overview.user_id %>
+                                    <div class="font-weight-bold text-uppercase mt-2 mb-2">
+                                            測定日 <%= overview.blood_urine_test_date %>
+                                            <%= link_to edit_overview_path(overview.id), method: :get, class: 'btn btn-info btn-circle btn-sm' do%>
+                                                <i class="far fa-edit"></i>
+                                            <% end %>
+                                            <%= link_to overview_path(overview.id), method: :delete, class: 'btn btn-danger btn-circle btn-sm' do%>
+                                                <i class="fas fa-trash btn-sm"></i>
+                                            <% end %>
+                                    </div>
+                                    <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                        <%= image_tag overview.image.variant(resize: '500x500') %>                                                                           
+                                    </span>
+                                    <hr class="sidebar-divider">
+                                <% end %>
+                            <% end %>
+                    <% else %>
+                        <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                        データを登録してね！
+                        </p>
                     <% end %>
                 </div>
             </div>     

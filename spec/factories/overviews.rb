@@ -7,7 +7,7 @@ FactoryBot.define do
     height                         { 160 }
     abdominal_circumference        { 80 }
     blood_urine_test_date          { Faker::Date.birthday }
-    medeical_care_date             { Faker::Date.birthday }
+    medical_care_date             { Faker::Date.birthday }
     clinic_name                    {"クリニック"}
     disease_name                   {"病名"}
     treatment_medicine             {"薬名"}

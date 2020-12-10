@@ -36,22 +36,22 @@
         </div>
     <!-- Nav Item -->
     <li class="nav-item">
-        <%= link_to '身体特徴', physicalfinding_overviews_path, class: "nav-link collapsed" %>
+        <%= link_to '身体特徴', physicalfinding_overview_path(current_user.id), class: "nav-link collapsed" %>
     </li>
 
     <!-- Nav Item -->
     <li class="nav-item">
-        <%= link_to '採血・採尿・画像検査', bloodurine_overviews_path, class: "nav-link collapsed" %>
+        <%= link_to '採血・採尿・画像検査', bloodurine_overview_path(current_user.id), class: "nav-link collapsed" %>
     </li>
 
     <!-- Nav Item -->
     <li class="nav-item">
-        <%= link_to '受診歴', medeicalcare_overviews_path, class: "nav-link collapsed" %>
+        <%= link_to '受診歴', medicalcare_overview_path(current_user.id), class: "nav-link collapsed" %>
     </li>
 
     <!-- Nav Item -->
     <li class="nav-item">
-        <%= link_to 'ワクチン接種歴', vaccine_overviews_path, class: "nav-link collapsed" %>
+        <%= link_to 'ワクチン接種歴', vaccine_overview_path(current_user.id), class: "nav-link collapsed" %>
     </li>
 
     <!-- Divider -->

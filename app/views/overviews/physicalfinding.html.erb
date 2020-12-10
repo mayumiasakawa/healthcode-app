@@ -21,58 +21,64 @@
                       <h3 class="m-0 font-weight-bold text-primary">身長・体重・腹囲</h3>
                   </div>
                   <div class="card-body">
-                      <div class="table-responsive">
-                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                              <thead>
-                                  <tr>
-                                      <th>測定日</th>
-                                      <th>身長 cm</th>
-                                      <th>体重 cm</th>
-                                      <th>腹囲 cm</th>
-                                      <th class="table-bmi">BMI　  </th>
-                                      <th class="table-edit-trash"></th>
-                                  </tr>
-                              </thead>
-                              <tfoot>
-                                  <tr>
-                                      <th>測定日</th>
-                                      <th>身長 cm</th>
-                                      <th>体重 cm</th>
-                                      <th>腹囲 cm</th>
-                                      <th>BMI　  </th>
-                                      <th></th>
-                                  </tr>
-                              </tfoot>
-                              <tbody>
-                                <% @overviews.each do |overview| %>
-                                  <% if overview.present? && overview.physicalfinding_measuring_date.present? && overview.user_id==current_user.id %> 
-                                  <div class="m-5">
-                                    <%= high_chart("my_chart", @chart) %>
-                                  </div>
-                                    <tr>
-                                        <td><%= overview.physicalfinding_measuring_date %></td>
-                                        <td><%= overview.height %></td>
-                                        <td><%= overview.weight %></td>
-                                        <td><%= overview.abdominal_circumference %></td>
-                                        <td><%= overview.bmi %></td>
-                                        <td>
-                                          <%= link_to edit_overview_path(overview.id), method: :get, class: 'btn btn-info btn-circle btn-sm' do%>
-                                            <i class="far fa-edit"></i>
-                                          <% end %>
-                                          <%= link_to overview_path(overview.id), method: :delete, class: 'btn btn-danger btn-circle btn-sm' do%>
-                                            <i class="fas fa-trash btn-sm"></i>
-                                          <% end %>
-                                        </td>
-                                    </tr>    
-                                  <% end %>
-                                <% end %>                                    
-                              </tbody>
-                          </table>
-                      </div>
+                    <% if @overviews.where(user_id: current_user.id).present? && @overviews.present? %>
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>測定日</th>
+                                    <th>身長 cm</th>
+                                    <th>体重 cm</th>
+                                    <th>腹囲 cm</th>
+                                    <th class="table-bmi">BMI　  </th>
+                                    <th class="table-edit-trash"></th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>測定日</th>
+                                    <th>身長 cm</th>
+                                    <th>体重 cm</th>
+                                    <th>腹囲 cm</th>
+                                    <th>BMI　  </th>
+                                    <th></th>
+                                </tr>
+                            </tfoot>                                
+                                <tbody>
+                                    <div class="m-5">
+                                        <%= high_chart("my_chart", @chart) %>
+                                    </div>
+                                    <% @overviews.each do |overview| %>
+                                        <% if current_user.id == overview.user_id %>
+                                            <tr>
+                                                <td><%= overview.physicalfinding_measuring_date %></td>
+                                                <td><%= overview.height %></td>
+                                                <td><%= overview.weight %></td>
+                                                <td><%= overview.abdominal_circumference %></td>
+                                                <td><%= overview.bmi %></td>
+                                                <td>
+                                                <%= link_to edit_overview_path(overview.id), method: :get, class: 'btn btn-info btn-circle btn-sm' do%>
+                                                    <i class="far fa-edit"></i>
+                                                <% end %>
+                                                <%= link_to overview_path(overview.id), method: :delete, class: 'btn btn-danger btn-circle btn-sm' do%>
+                                                    <i class="fas fa-trash btn-sm"></i>
+                                                <% end %>
+                                                </td>
+                                            </tr>
+                                        <% end %>
+                                    <% end %>
+                                </tbody>                    
+                            </table>
+                        </div>
+                    <% elsif %>
+                        <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                            データを登録してね！
+                        </p>
+                    <% end %> 
                   </div>
               </div>
 
-                </div>
+            </div>
               <!-- /.container-fluid -->    
     </div>
 <% end %>

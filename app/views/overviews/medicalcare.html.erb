@@ -1,0 +1,120 @@
+<div  id="page-top">
+
+<% if user_signed_in? %>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+    <%= render "shared/sidebar" %>
+
+     <!-- Content Wrapper -->
+     <div id="content-wrapper" class="d-flex flex-column">
+
+         <!-- Main Content -->
+         <div id="content">
+            <%= render "shared/header" %>
+
+            <div class="container-fluid">
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h3 class="m-0 font-weight-bold text-primary">受診歴</h3>
+                        </div>
+                        <div class="card-body"> 
+                            <% if @overviews.where(user_id: current_user.id).present? && @overviews.present? %> 
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>受診日</th>
+                                                <th>病院名</th>
+                                                <th>病名・診断名</th>
+                                                <th>処置・薬</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>受診日</th>
+                                                <th>病院名</th>
+                                                <th>病名・診断名</th>
+                                                <th>処置・薬</th>
+                                                <th></th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <% @overviews.each do |overview| %>
+                                                <% if current_user.id == overview.user_id %>
+                                                    <tr>
+                                                        <td><%= overview.medical_care_date %></td>
+                                                        <td><%= overview.clinic_name %></td>
+                                                        <td><%= overview.disease_name %></td>
+                                                        <td><%= overview.treatment_medicine %></td>
+                                                        <td>
+                                                            <%= link_to edit_overview_path(overview.id), method: :get, class: 'btn btn-info btn-circle btn-sm' do%>
+                                                                <i class="far fa-edit"></i>
+                                                            <% end %>
+                                                            <%= link_to overview_path(overview.id), method: :delete, class: 'btn btn-danger btn-circle btn-sm' do%>
+                                                                <i class="fas fa-trash btn-sm"></i>
+                                                            <% end %>
+                                                        </td>
+                                                    </tr>
+                                                <% end %>
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% else %>
+                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                    データを登録してね！
+                                </p>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->    
+    </div>
+<% end %>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+    <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2020</span>
+            </div>
+        </div>
+    </footer>
+    <!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

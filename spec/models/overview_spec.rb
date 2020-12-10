@@ -17,7 +17,7 @@ RSpec.describe Overview, type: :model do
         @overview.abdominal_circumference = ''
         @overview.blood_urine_test_date = ''
         @overview.image = nil
-        @overview.medeical_care_date = ''
+        @overview.medical_care_date = ''
         @overview.clinic_name = ''
         @overview.disease_name = ''
         @overview.treatment_medicine = ''
@@ -32,7 +32,7 @@ RSpec.describe Overview, type: :model do
         @overview.abdominal_circumference = ''
         @overview.blood_urine_test_date = ''
         @overview.image = nil
-        @overview.medeical_care_date = ''
+        @overview.medical_care_date = ''
         @overview.clinic_name = ''
         @overview.disease_name = ''
         @overview.treatment_medicine = ''
@@ -47,7 +47,7 @@ RSpec.describe Overview, type: :model do
         @overview.abdominal_circumference = '80'
         @overview.blood_urine_test_date = ''
         @overview.image = nil
-        @overview.medeical_care_date = ''
+        @overview.medical_care_date = ''
         @overview.clinic_name = ''
         @overview.disease_name = ''
         @overview.treatment_medicine = ''
@@ -62,7 +62,7 @@ RSpec.describe Overview, type: :model do
         @overview.abdominal_circumference = ''
         @overview.blood_urine_test_date = '2020-01-01'
         @overview.image = fixture_file_upload('public/images/test_image.jpg')
-        @overview.medeical_care_date = ''
+        @overview.medical_care_date = ''
         @overview.clinic_name = ''
         @overview.disease_name = ''
         @overview.treatment_medicine = ''
@@ -77,7 +77,7 @@ RSpec.describe Overview, type: :model do
         @overview.abdominal_circumference = ''
         @overview.blood_urine_test_date = ''
         @overview.image = nil
-        @overview.medeical_care_date = '2020-01-01'
+        @overview.medical_care_date = '2020-01-01'
         @overview.clinic_name = 'クリニック'
         @overview.disease_name = '膀胱炎'
         @overview.treatment_medicine = '抗生剤内服'
@@ -92,7 +92,7 @@ RSpec.describe Overview, type: :model do
         @overview.abdominal_circumference = ''
         @overview.blood_urine_test_date = ''
         @overview.image = nil
-        @overview.medeical_care_date = ''
+        @overview.medical_care_date = ''
         @overview.clinic_name = ''
         @overview.disease_name = ''
         @overview.treatment_medicine = ''
@@ -110,23 +110,23 @@ RSpec.describe Overview, type: :model do
         @overview.abdominal_circumference = ''
         @overview.blood_urine_test_date = ''
         @overview.image = nil
-        @overview.medeical_care_date = ''
+        @overview.medical_care_date = ''
         @overview.clinic_name = ''
         @overview.disease_name = ''
         @overview.treatment_medicine = ''
         @overview.vaccine_date = ''
         @overview.vaccine_id = '1'
         @overview.valid?
-        expect(@overview.errors.full_messages).to include("Physicalfinding measuring date can't be blank", "Medeical care date can't be blank")
+        expect(@overview.errors.full_messages).to include("Physicalfinding measuring date can't be blank", "medical care date can't be blank")
       end
 
       it 'いずれかの日付が入力されていないと登録できない' do
         @overview.physicalfinding_measuring_date = ''
         @overview.blood_urine_test_date = ''
-        @overview.medeical_care_date = ''
+        @overview.medical_care_date = ''
         @overview.vaccine_date = ''
         @overview.valid?
-        expect(@overview.errors.full_messages).to include("Physicalfinding measuring date can't be blank", "Medeical care date can't be blank")
+        expect(@overview.errors.full_messages).to include("Physicalfinding measuring date can't be blank", "medical care date can't be blank")
       end
 
       it '身長体重腹囲の測定日があっても・身長体重腹囲の入力がなければ登録できない' do
@@ -208,7 +208,7 @@ RSpec.describe Overview, type: :model do
       end
 
       it '受診日があっても・病院名・病名・処置名の入力がなければ登録できない' do
-        @overview.medeical_care_date = '2020-01-01'
+        @overview.medical_care_date = '2020-01-01'
         @overview.clinic_name = ''
         @overview.disease_name = ''
         @overview.treatment_medicine = ''
@@ -216,12 +216,12 @@ RSpec.describe Overview, type: :model do
         expect(@overview.errors.full_messages).to include("Clinic name can't be blank", "Disease name can't be blank", "Treatment medicine can't be blank")
       end
       it '病名・処置名があっても・受診日の入力がなければ登録できない' do
-        @overview.medeical_care_date = ''
+        @overview.medical_care_date = ''
         @overview.clinic_name = 'クリニック'
         @overview.disease_name = '病名'
         @overview.treatment_medicine = '薬'
         @overview.valid?
-        expect(@overview.errors.full_messages).to include("Medeical care date can't be blank")
+        expect(@overview.errors.full_messages).to include("medical care date can't be blank")
       end
       it '接種日があっても・ワクチンの種類の入力がなければ(1であれば)登録できない' do
         @overview.vaccine_date = '2020-01-01'
