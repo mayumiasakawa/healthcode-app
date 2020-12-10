@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_102102) do
     t.integer "bmi"
     t.integer "abdominal_circumference"
     t.date "blood_urine_test_date"
-    t.date "medeical_care_date"
+    t.date "medical_care_date"
     t.string "clinic_name"
     t.string "disease_name"
     t.string "treatment_medicine"
