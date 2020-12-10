@@ -21,7 +21,9 @@
                 </div>
 
                   <%= form_with model: @overview, url: overviews_path, class: 'user',name: 'form', local: true do |f| %> 
-                  
+                    
+                    <%= render 'shared/error_messages', model: f.object %>
+
                   <div class="card card-body border-left-success mb-3 py-3">
                     <div class="h5 m-3">
                       身長・体重・腹囲　・BMI
