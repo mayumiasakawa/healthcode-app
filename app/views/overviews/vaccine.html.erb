@@ -20,7 +20,7 @@
                         <h3 class="m-0 font-weight-bold text-primary">ワクチン接種歴</h3>
                     </div>
                     <div class="card-body">
-                        <% if @overviews.where(user_id: current_user.id).present? && @overviews.present? %> 
+                        <% if @overviews.where.not(vaccine_date:nil).where(user_id: current_user.id).present? %> 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>

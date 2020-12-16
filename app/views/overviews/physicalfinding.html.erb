@@ -21,7 +21,7 @@
                       <h3 class="m-0 font-weight-bold text-primary">身長・体重・腹囲</h3>
                   </div>
                   <div class="card-body">
-                    <% if @overviews.where(user_id: current_user.id).present? %>
+                    <% if @overviews.where.not(physicalfinding_measuring_date:nil).where(user_id: current_user.id).present? %>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -68,7 +68,7 @@
                                 </tbody>                    
                             </table>
                         </div>
-                    <% elsif %>
+                    <% else %>
                         <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                             データを登録してね！
                         </p>
