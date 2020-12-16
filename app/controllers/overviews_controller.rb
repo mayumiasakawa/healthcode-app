@@ -5,10 +5,10 @@ class OverviewsController < ApplicationController
   before_action :set_chart, only: [:index, :physicalfinding]
 
   def index
-    @overview_physicalfinding_measuring = Overview.includes(:user).order(physicalfinding_measuring_date: :desc).where(params[:id]).first
-    @overview_blood_urine_test = Overview.includes(:user).order(blood_urine_test_date: :desc).where(params[:id]).first
-    @overview_medical_cares = Overview.includes(:user).order(medical_care_date: :desc).where(params[:id]).first
-    @overview_vaccines = Overview.includes(:user).order(vaccine_date: :desc).where(params[:id]).first
+    @overview_physicalfinding_measuring = Overview.includes(:user).where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :desc).where(params[:id])
+    @overview_blood_urine_test = Overview.includes(:user).where.not(blood_urine_test_date:nil).order(blood_urine_test_date: :desc).where(params[:id])
+    @overview_medical_cares = Overview.includes(:user).where.not(medical_care_date:nil).order(medical_care_date: :desc).where(params[:id])
+    @overview_vaccines = Overview.includes(:user).where.not(vaccine_date:nil).order(vaccine_date: :desc).where(params[:id])
   end
 
   def new
@@ -49,11 +49,11 @@ class OverviewsController < ApplicationController
   end
 
   def physicalfinding
-    @overviews = Overview.includes(:user).order(physicalfinding_measuring_date: :desc)
+    @overviews = Overview.includes(:user).where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :desc).where(params[:id])
   end
 
   def bloodurine
-    @overviews = Overview.includes(:user).order(blood_urine_test_date: :desc).where(params[:id])
+    @overviews = Overview.includes(:user).where.not(blood_urine_test_date:nil).order(blood_urine_test_date: :desc).where(params[:id])
   end
 
   def medicalcare

@@ -16,7 +16,7 @@
             <div class="row">
               <div class="p-5 pt-3">
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                  <h1 class="h3 mb-0 text-gray-800">編集</h1>
+                  <h1 class="h3 mb-0 text-gray-800">編集・削除</h1>
                 </div>
 
                   <%= form_with model: @overview, class: 'user',name: 'form', local: true do |f| %> 
@@ -140,7 +140,8 @@
                         </div>
                     </div>
                   </div>
-                      <%= f.submit "登録" ,class:"rbtn btn-primary btn-user btn-block" %>
+                      <%= f.submit "再登録" ,class:"btn btn-facebook btn-block" %>
+                      <%= link_to "削除", overview_path(@overview.id), method: :delete, class: 'btn btn-google btn-block' %>
                   <% end %>
               </div>         
             </div>

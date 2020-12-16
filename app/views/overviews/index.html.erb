@@ -63,7 +63,7 @@
                         <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                 体重・腹囲・BMI
                         </span>
-                        <% if @overview_physicalfinding_measuring.present? && @overview_physicalfinding_measuring.user_id==current_user.id %> 
+                        <% if @overview_physicalfinding_measuring.where(user_id: current_user.id).present? %>
                             <div class="m-5">
                                 <%= high_chart("my_chart", @chart) %>
                             </div>
@@ -81,12 +81,12 @@
                             <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                 採血・採尿
                             </span>
-                            <% if @overview_blood_urine_test.present? && @overview_blood_urine_test.user_id==current_user.id %>
+                            <% if @overview_blood_urine_test.where(user_id: current_user.id).present? %>
                                 <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                        最新測定日 <%= @overview_blood_urine_test.blood_urine_test_date %>
+                                        最新測定日 <%= @overview_blood_urine_test.first.blood_urine_test_date %>
                                 </div>                                                               
                                 <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= image_tag @overview_blood_urine_test.image.variant(resize: '500x500'), class: 'message-image' if @overview_blood_urine_test.image.attached? %>                                         
+                                    <%= image_tag @overview_blood_urine_test.first.image.variant(resize: '500x500'), class: 'message-image' %>                                         
                                 </span>
                             <% else %>
                                 <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
@@ -102,8 +102,7 @@
                         <span class="h5 font-weight-bold text-uppercase mb-2">
                             最終受診歴
                         </span>
-
-                        <% if @overview_medical_cares.present? && @overview_medical_cares.user_id==current_user.id %>                
+                        <% if @overview_medical_cares.where(user_id: current_user.id).present? %>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -115,12 +114,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><%= @overview_medical_cares.medical_care_date %></td>
-                                            <td><%= @overview_medical_cares.clinic_name %></td>
-                                            <td><%= @overview_medical_cares.disease_name %></td>
-                                            <td><%= @overview_medical_cares.treatment_medicine %></td>     
-                                        </tr> 
+                                        <% @overview_medical_cares.first(3).each do |overview_medical_care| %>
+                                            <tr>
+                                                <td><%= overview_medical_care.medical_care_date %></td>
+                                                <td><%= overview_medical_care.clinic_name %></td>
+                                                <td><%= overview_medical_care.disease_name %></td>
+                                                <td><%= overview_medical_care.treatment_medicine %></td>     
+                                            </tr> 
+                                        <% end %>
                                     </tbody>
                                 </table>
                             </div>
@@ -138,14 +139,16 @@
                         <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                             最終ワクチン接種歴
                         </span>
-                        <% if @overview_vaccines.present?  && @overview_vaccines.user_id==current_user.id %>   
+                        <% if @overview_vaccines.where(user_id: current_user.id).present? %>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <tbody>
+                                    <% @overview_vaccines.first(3).each do |overview_vaccine| %>
                                         <tr>
-                                            <td><%= @overview_vaccines.vaccine_date %></td>
-                                            <td><%= @overview_vaccines.vaccine.name %></td>
+                                                <td><%= overview_vaccine.vaccine_date %></td>
+                                                <td><%= overview_vaccine.vaccine.name %></td>
                                         </tr>
+                                    <% end %>
                                     </tbody>
                                 </table>
                             </div>
