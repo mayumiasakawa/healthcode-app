@@ -86,7 +86,7 @@
                                         最新測定日 <%= @overview_blood_urine_tests.first.blood_urine_test_date %>
                                 </div>                                                               
                                 <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= image_tag @overview_blood_urine_tests.first.image.variant(resize: '500x500'), class: 'message-image' %>                                         
+                                    <%= image_tag @overview_blood_urine_tests.first.image, class: 'message-image' if @overview_blood_urine_tests.first.image.present? %>                                         
                                 </span>
                             <% else %>
                                 <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
