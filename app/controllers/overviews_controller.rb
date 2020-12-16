@@ -3,12 +3,13 @@ class OverviewsController < ApplicationController
   before_action :move_to_index, except: [:index]
   before_action :set_overview, only: [:edit, :update, :destroy]
   before_action :set_chart, only: [:index, :physicalfinding]
+  before_action :overview_physicalfinding_measuring, only: [:index, :physicalfinding]
+  before_action :overview_blood_urine_test, only: [:index, :bloodurine]
+  before_action :overview_medical_care, only: [:index, :medicalcare]
+  before_action :overview_vaccines, only: [:index, :vaccine]
+  
 
   def index
-    @overview_physicalfinding_measuring = Overview.includes(:user).where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :desc).where(params[:id])
-    @overview_blood_urine_test = Overview.includes(:user).where.not(blood_urine_test_date:nil).order(blood_urine_test_date: :desc).where(params[:id])
-    @overview_medical_cares = Overview.includes(:user).where.not(medical_care_date:nil).order(medical_care_date: :desc).where(params[:id])
-    @overview_vaccines = Overview.includes(:user).where.not(vaccine_date:nil).order(vaccine_date: :desc).where(params[:id])
   end
 
   def new
@@ -49,19 +50,15 @@ class OverviewsController < ApplicationController
   end
 
   def physicalfinding
-    @overviews = Overview.includes(:user).where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :desc).where(params[:id])
   end
 
   def bloodurine
-    @overviews = Overview.includes(:user).where.not(blood_urine_test_date:nil).order(blood_urine_test_date: :desc).where(params[:id])
   end
 
   def medicalcare
-    @overviews = Overview.includes(:user).order(medical_care_date: :desc).where(params[:id])
   end
 
   def vaccine
-    @overviews = Overview.includes(:user).order(vaccine_date: :desc).where(params[:id])
   end
 
   private
@@ -96,6 +93,22 @@ class OverviewsController < ApplicationController
         c.series(name: "BMI", data: bmi)
       end
     end
+  end
+
+  def overview_physicalfinding_measuring
+    @overview_physicalfinding_measurings = Overview.includes(:user).where.not(physicalfinding_measuring_date:nil).order(physicalfinding_measuring_date: :desc).where(params[:id])
+  end
+
+  def overview_blood_urine_test
+    @overview_blood_urine_tests = Overview.includes(:user).where.not(blood_urine_test_date:nil).order(blood_urine_test_date: :desc).where(params[:id])
+  end
+
+  def overview_medical_care
+    @overview_medical_cares = Overview.includes(:user).where.not(medical_care_date:nil).order(medical_care_date: :desc).where(params[:id])
+  end
+
+  def overview_vaccines
+    @overview_vaccines = Overview.includes(:user).where.not(vaccine_date:nil).order(vaccine_date: :desc).where(params[:id])
   end
 
 end

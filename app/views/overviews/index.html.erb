@@ -63,7 +63,7 @@
                         <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                 体重・腹囲・BMI
                         </span>
-                        <% if @overview_physicalfinding_measuring.where(user_id: current_user.id).present? %>
+                        <% if @overview_physicalfinding_measurings.where(user_id: current_user.id).present? %>
                             <div class="m-5">
                                 <%= high_chart("my_chart", @chart) %>
                             </div>
@@ -81,12 +81,12 @@
                             <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
                                 採血・採尿
                             </span>
-                            <% if @overview_blood_urine_test.where(user_id: current_user.id).present? %>
+                            <% if @overview_blood_urine_tests.where(user_id: current_user.id).present? %>
                                 <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                        最新測定日 <%= @overview_blood_urine_test.first.blood_urine_test_date %>
+                                        最新測定日 <%= @overview_blood_urine_tests.first.blood_urine_test_date %>
                                 </div>                                                               
                                 <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= image_tag @overview_blood_urine_test.first.image.variant(resize: '500x500'), class: 'message-image' %>                                         
+                                    <%= image_tag @overview_blood_urine_tests.first.image.variant(resize: '500x500'), class: 'message-image' %>                                         
                                 </span>
                             <% else %>
                                 <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">

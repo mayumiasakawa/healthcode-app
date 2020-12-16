@@ -21,7 +21,7 @@
                       <h3 class="m-0 font-weight-bold text-primary">身長・体重・腹囲</h3>
                   </div>
                   <div class="card-body">
-                    <% if @overviews.where.not(physicalfinding_measuring_date:nil).where(user_id: current_user.id).present? %>
+                    <% if @overview_physicalfinding_measurings.where.not(physicalfinding_measuring_date:nil).where(user_id: current_user.id).present? %>
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -48,7 +48,7 @@
                                     <div class="m-5">
                                         <%= high_chart("my_chart", @chart) %>
                                     </div>
-                                    <% @overviews.each do |overview| %>
+                                    <% @overview_physicalfinding_measurings.each do |overview| %>
                                         <% if current_user.id == overview.user_id %>
                                             <tr>
                                                 <td><%= overview.physicalfinding_measuring_date %></td>
