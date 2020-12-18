@@ -1,43 +1,37 @@
-
 <!-- Topbar -->
-             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<nav class="navbar fixed-top navbar-expand-lg  navbar-dark bg-primary">
+    <%= link_to 'Helath Code', root_path, class: "navbar-brand" %>
 
-                 <!-- Topbar Navbar -->
-                 <ul class="navbar-nav ml-auto">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 
-                     <div class="topbar-divider d-none d-sm-block"></div>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+            <%= link_to 'データを登録する',  new_overview_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                登録データを見る
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to '身体特徴', physicalfinding_overview_path(current_user.id), class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to '採血・採尿・画像検査', bloodurine_overview_path(current_user.id), class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to '受診歴', medicalcare_overview_path(current_user.id), class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'ワクチン接種歴', vaccine_overview_path(current_user.id), class: "dropdown-item" %>
+                </div>
+            </li>
+        </ul>
 
-                     <!-- Nav Item - User Information -->
-                     <% if user_signed_in? %>
-                     <li class="nav-item no-arrow">
-                         <span class="nav-link">
-                             <%= link_to current_user.last_name  + current_user.first_name + "様", "#", class: "mr-2 d-none d-lg-inline text-gray-600 small"%>
-                         </span>
-                     </li>
+        <% if user_signed_in? %>
+            <%= link_to current_user.last_name  + current_user.first_name + "様", "#", class: "navbar-text mr-2"%>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "navbar-text mr-4"%>
+        <% else %>   
+            <%= link_to 'ログイン', new_user_session_path, class: "navbar-text mr-2" %>
+            <%= link_to '新規登録', new_user_registration_path, class: "navbar-text mr-4" %>
+        <% end %>
 
-                     <div class="topbar-divider d-none d-sm-block"></div>
-                     
-                     <li class="nav-item no-arrow">
-                         <span class="nav-link">
-                             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "mr-2 d-none d-lg-inline text-gray-600 small"%>
-                         </span>
-                     </li>
-                     <% else %>
-                     <li class="nav-item no-arrow">
-                         <span class="nav-link">
-                             <%= link_to 'ログイン', new_user_session_path, class: "mr-2 d-none d-lg-inline text-gray-600 small" %>
-                         </span>
-                     </li>
-
-                     <div class="topbar-divider d-none d-sm-block"></div>
-                     
-                     <li class="nav-item no-arrow">
-                         <span class="nav-link">
-                             <%= link_to '新規登録', new_user_registration_path, class: "mr-2 d-none d-lg-inline text-gray-600 small" %>
-                         </span>
-                     </li>
-                     <% end %>
-                 </ul>
-
-             </nav>
-<!-- End of Topbar -->
+    </div>
+    
+</nav>
