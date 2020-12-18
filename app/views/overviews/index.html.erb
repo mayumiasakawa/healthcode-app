@@ -34,130 +34,174 @@
     </div>
 <% end %>
 
-<div id="page-top">
-
 <% if user_signed_in? %>
-    <!-- Page Wrapper -->
+<!-- Page Wrapper -->
     <div id="wrapper">
 
-     <!-- Content Wrapper -->
-     <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-         <!-- Main Content -->
-         <div id="content">
-            <%= render "shared/header" %>
+            <!-- Main Content -->
+            <div id="content">
 
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
+                <!-- Topbar -->
+                <%= render "shared/header" %>
+                <!-- End of Topbar -->
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">最新情報</h1>
-                </div>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
 
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="card border-left-success shadow h-100 py-2 md-12 mb-4">
-                    <div class="card-body">
-                        <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                体重・腹囲・BMI
-                        </span>
-                        <% if @overview_physicalfinding_measurings.where(user_id: current_user.id).present? %>
-                            <div class="m-5">
-                                <%= high_chart("my_chart", @chart) %>
-                            </div>
-                        <% else %>
-                            <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
-                            データを登録してね！
-                        </p>
-                    <% end %> 
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">最新情報</h1>
                     </div>
-                </div>            
-                
-                <!-- Earnings (Monthly) Card Example -->
-                    <div class="card border-left-info shadow h-100 py-2 md-12 mb-4">
-                        <div class="card-body">
-                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                                採血・採尿
-                            </span>
-                            <% if @overview_blood_urine_tests.where(user_id: current_user.id).present? %>
-                                <div class="font-weight-bold text-uppercase mt-2 mb-2">
-                                        最新測定日 <%= @overview_blood_urine_tests.where(user_id: current_user.id).first.blood_urine_test_date %>
-                                </div>                                                               
-                                <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                    <%= image_tag @overview_blood_urine_tests.where(user_id: current_user.id).first.image.variant(resize: '500x500'), class: 'message-image' if @overview_blood_urine_tests.where(user_id: current_user.id).first.image.present? %>                                         
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="card border-left-success shadow h-100 py-2 md-12 mb-4">
+                            <div class="card-body">
+                                <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                        体重・腹囲・BMI
                                 </span>
+                                <% if @overview_physicalfinding_measurings.where(user_id: current_user.id).present? %>
+                                    <div class="m-5">
+                                        <%= high_chart("my_chart", @chart) %>
+                                    </div>
+                                <% else %>
+                                    <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                    データを登録してね！
+                                    </p>
+                                <% end %> 
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="card border-left-info shadow h-100 py-2 md-12 mb-4">
+                            <div class="card-body">
+                                <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                    採血・採尿
+                                </span>
+                                <% if @overview_blood_urine_tests.where(user_id: current_user.id).present? %>
+                                    <div class="font-weight-bold text-uppercase mt-2 mb-2">
+                                            最新測定日 <%= @overview_blood_urine_tests.where(user_id: current_user.id).first.blood_urine_test_date %>
+                                    </div>                                                               
+                                    <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
+                                        <%= image_tag @overview_blood_urine_tests.where(user_id: current_user.id).first.image.variant(resize: '500x500'), class: 'message-image' if @overview_blood_urine_tests.where(user_id: current_user.id).first.image.present? %>                                         
+                                    </span>
+                                <% else %>
+                                    <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                        データを登録してね！
+                                    </p>
+                                <% end %>
+                            </div>
+                        </div>            
+                            
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="card border-left-warning shadow h-100 py-2 md-12 mb-4">
+                        <div class="card-body">
+                            <span class="h5 font-weight-bold text-uppercase mb-2">
+                                最終受診歴
+                            </span>
+                            <% if @overview_medical_cares.where(user_id: current_user.id).present? %>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>病院名</th>
+                                                <th>病名・診断名</th>
+                                                <th>処置・薬</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% @overview_medical_cares.first(3).each do |overview_medical_care| %>
+                                                <tr>
+                                                    <td><%= overview_medical_care.medical_care_date %></td>
+                                                    <td><%= overview_medical_care.clinic_name %></td>
+                                                    <td><%= overview_medical_care.disease_name %></td>
+                                                    <td><%= overview_medical_care.treatment_medicine %></td>     
+                                                </tr> 
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
                             <% else %>
                                 <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
                                     データを登録してね！
-                                </p>
-                            <% end %>
+                                </p>    
+                            <% end %> 
                         </div>
-                    </div>            
-                        
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="card border-left-warning shadow h-100 py-2 md-12 mb-4">
-                    <div class="card-body">
-                        <span class="h5 font-weight-bold text-uppercase mb-2">
-                            最終受診歴
-                        </span>
-                        <% if @overview_medical_cares.where(user_id: current_user.id).present? %>
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>病院名</th>
-                                            <th>病名・診断名</th>
-                                            <th>処置・薬</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% @overview_medical_cares.first(3).each do |overview_medical_care| %>
-                                            <tr>
-                                                <td><%= overview_medical_care.medical_care_date %></td>
-                                                <td><%= overview_medical_care.clinic_name %></td>
-                                                <td><%= overview_medical_care.disease_name %></td>
-                                                <td><%= overview_medical_care.treatment_medicine %></td>     
-                                            </tr> 
-                                        <% end %>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <% else %>
-                            <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
-                                データを登録してね！
-                            </p>    
-                        <% end %> 
+                    </div>
+    
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="card border-left-danger shadow h-100 py-2 md-12 mb-4">
+                        <div class="card-body">
+                            <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
+                                最終ワクチン接種歴
+                            </span>
+                            <% if @overview_vaccines.where(user_id: current_user.id).present? %>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <tbody>
+                                            <% @overview_vaccines.first(3).each do |overview_vaccine| %>
+                                                <tr>
+                                                        <td><%= overview_vaccine.vaccine_date %></td>
+                                                        <td><%= overview_vaccine.vaccine.name %></td>
+                                                </tr>
+                                            <% end %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% else %>
+                                <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
+                                    データを登録してね！
+                                </p>      
+                            <% end %>
+                        </div>     
                     </div>
                 </div>
+                <!-- /.container-fluid -->
 
-                <!-- Earnings (Monthly) Card Example -->
-                <div class="card border-left-danger shadow h-100 py-2 md-12 mb-4">
-                    <div class="card-body">
-                        <span class="h5 font-weight-bold text-uppercase mb-1 mr-2">
-                            最終ワクチン接種歴
-                        </span>
-                        <% if @overview_vaccines.where(user_id: current_user.id).present? %>
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <tbody>
-                                    <% @overview_vaccines.first(3).each do |overview_vaccine| %>
-                                        <tr>
-                                                <td><%= overview_vaccine.vaccine_date %></td>
-                                                <td><%= overview_vaccine.vaccine.name %></td>
-                                        </tr>
-                                    <% end %>
-                                    </tbody>
-                                </table>
-                            </div>
-                        <% else %>
-                            <p class="h6 font-weight-bold text-uppercase mb-1 mr-2">
-                                データを登録してね！
-                            </p>      
-                        <% end %>
-                    </div>     
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2020</span>
+                    </div>
                 </div>
-<% end %>
-    <!-- End of Main Content -->
+            </footer>
+            <!-- End of Footer -->
 
-<%= render "shared/fotter" %>
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <% end %>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
