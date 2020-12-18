@@ -2,8 +2,11 @@
 <nav class="navbar fixed-top navbar-expand-lg  navbar-dark bg-primary">
     <%= link_to 'Helath Code', root_path, class: "navbar-brand" %>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
             <%= link_to 'データを登録する',  new_overview_path, class: "nav-link" %>
@@ -23,15 +26,13 @@
                 </div>
             </li>
         </ul>
-
         <% if user_signed_in? %>
-            <%= link_to current_user.last_name  + current_user.first_name + "様", "#", class: "navbar-text mr-2"%>
-            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "navbar-text mr-4"%>
-        <% else %>   
-            <%= link_to 'ログイン', new_user_session_path, class: "navbar-text mr-2" %>
-            <%= link_to '新規登録', new_user_registration_path, class: "navbar-text mr-4" %>
-        <% end %>
+                <%= link_to current_user.last_name  + current_user.first_name + "様", "#", class: "navbar-text mr-2"%>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "navbar-text mr-4"%>
+            <% else %>          
+                <%= link_to 'ログイン', new_user_session_path, class: "navbar-text mr-2" %>
+                <%= link_to '新規登録', new_user_registration_path, class: "navbar-text mr-4" %>
 
+        <% end %>
     </div>
-    
 </nav>

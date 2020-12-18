@@ -9777,7 +9777,6 @@ a:focus {
 
 #wrapper {
   display: flex;
-  padding-top: 100px;
 }
 
 #wrapper #content-wrapper {
@@ -9788,6 +9787,7 @@ a:focus {
 
 #wrapper #content-wrapper #content {
   flex: 1 0 auto;
+  padding-top: 100px;
 }
 
 .container,
