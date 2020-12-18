@@ -105,7 +105,7 @@
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
-                                            <tr>
+                                            <tr class="thead bg-primary bg-gradient text-light">
                                                 <th></th>
                                                 <th>病院名</th>
                                                 <th>病名・診断名</th>
@@ -116,9 +116,9 @@
                                             <% @overview_medical_cares.first(3).each do |overview_medical_care| %>
                                                 <tr>
                                                     <td><%= overview_medical_care.medical_care_date %></td>
-                                                    <td><%= overview_medical_care.clinic_name %></td>
-                                                    <td><%= overview_medical_care.disease_name %></td>
-                                                    <td><%= overview_medical_care.treatment_medicine %></td>     
+                                                    <td data-label="病院名"><%= overview_medical_care.clinic_name %></td>
+                                                    <td data-label="病名"><%= overview_medical_care.disease_name %></td>
+                                                    <td data-label="処置・薬"><%= overview_medical_care.treatment_medicine %></td>     
                                                 </tr> 
                                             <% end %>
                                         </tbody>
@@ -141,11 +141,17 @@
                             <% if @overview_vaccines.where(user_id: current_user.id).present? %>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                            <tr class="thead bg-primary bg-gradient text-light">
+                                                <th>接種日</th>
+                                                <th>種類</th>
+                                            </tr>
+                                        </thead>
                                         <tbody>
                                             <% @overview_vaccines.first(3).each do |overview_vaccine| %>
                                                 <tr>
                                                         <td><%= overview_vaccine.vaccine_date %></td>
-                                                        <td><%= overview_vaccine.vaccine.name %></td>
+                                                        <td data-label="種類"><%= overview_vaccine.vaccine.name %></td>
                                                 </tr>
                                             <% end %>
                                         </tbody>
