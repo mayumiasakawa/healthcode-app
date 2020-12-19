@@ -29,7 +29,7 @@
                                             <% end %>
                                     </div>
                                     <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
-                                        <%= image_tag overview.image.variant(resize: '500x500') if overview.image.present?  %>                                                                           
+                                        <%= image_tag overview.image.variant(resize: '500x500'), class: 'test-image' if overview.image.present?  %>                                                                           
                                     </span>
                                     <hr class="sidebar-divider">
                                 <% end %>

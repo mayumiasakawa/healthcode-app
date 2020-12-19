@@ -11328,3 +11328,9 @@ body.sidebar-toggled footer.sticky-footer {
     margin-right: 10px;
   }
 }
+
+.test-image{
+  width:100%;
+  max-width: 100%;
+  height: auto;
+}
