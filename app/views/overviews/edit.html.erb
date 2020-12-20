@@ -77,7 +77,9 @@
                             <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp', style:"display:none", id:'img' %>
                           </label>
                         </div>
-                        <div class="btn btn-light btn-icon-split mt-2 blood-urine-test" id="img_clear"><label class="text">画像をリセット</label></div>
+                        <div class="btn btn-light btn-icon-split mt-2 blood-urine-test" id="img_clear">
+                          <label class="text">画像をリセット</label>
+                        </div>
                           
                         <div id="image-list">
                           <%= image_tag @overview.image, id: 'image' if @overview.image.present? %> 
