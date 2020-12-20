@@ -11327,6 +11327,10 @@ body.sidebar-toggled footer.sticky-footer {
     font-weight: bold;
     margin-right: 10px;
   }
+
+  #my_chart svg{
+    margin: 0;
+  }
 }
 
 .test-image{
