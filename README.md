@@ -44,6 +44,14 @@ Things you may want to cover:
 # Demo
 ![gamen_test1](https://user-images.githubusercontent.com/63479656/102958891-55c2d000-4521-11eb-9c47-ac3eb5b9571e.gif)
 
+# Usage
+
+# Requirement
+- Ruby On Rails 6.0.0
+- MySQL
+- jQuery
+- Heroku
+
 ## users テーブル
 | Column                | Type    | Options      |
 | --------------------- | ------- | ------------ |
