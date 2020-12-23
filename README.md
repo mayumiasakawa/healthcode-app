@@ -41,6 +41,9 @@ Things you may want to cover:
 # Preview
 <img width="1438" alt="スクリーンショット 2020-12-23 12 44 29" src="https://user-images.githubusercontent.com/63479656/102957052-cadfd680-451c-11eb-91c6-09ad1d7e971d.png">
 
+# Demo
+![gamen_test1](https://user-images.githubusercontent.com/63479656/102958891-55c2d000-4521-11eb-9c47-ac3eb5b9571e.gif)
+
 ## users テーブル
 | Column                | Type    | Options      |
 | --------------------- | ------- | ------------ |
