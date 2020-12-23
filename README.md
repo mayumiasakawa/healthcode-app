@@ -45,6 +45,19 @@ Things you may want to cover:
 ![gamen_test1](https://user-images.githubusercontent.com/63479656/102958891-55c2d000-4521-11eb-9c47-ac3eb5b9571e.gif)
 
 # Usage
+- HEADER
+データ登録、閲覧を選びます。
+- 2 ブラウザ表示
+![preview_header](https://user-images.githubusercontent.com/63479656/102960699-dc79ac00-4525-11eb-865c-87e95352bd9f.gif)
+- 2 レスポンシブ表示
+![preview_header_responsive](https://user-images.githubusercontent.com/63479656/102961158-fbc50900-4526-11eb-8af0-b9f5ac85d66b.gif)
+
+-Registration
+データ登録・閲覧
+データ登録はまとめて登録することもできます。
+各項目毎に表示され、時系列で見ることができます。
+![registration_body](https://user-images.githubusercontent.com/63479656/102961523-d84e8e00-4527-11eb-9e1b-8ea1cd4be930.gif)
+
 
 # Requirement
 - Ruby On Rails 6.0.0
@@ -52,6 +65,7 @@ Things you may want to cover:
 - jQuery
 - Heroku
 
+# DataBase
 ## users テーブル
 | Column                | Type    | Options      |
 | --------------------- | ------- | ------------ |
