@@ -52,11 +52,17 @@ Things you may want to cover:
 - 2 レスポンシブ表示
 ![preview_header_responsive](https://user-images.githubusercontent.com/63479656/102961158-fbc50900-4526-11eb-8af0-b9f5ac85d66b.gif)
 
--Registration
+ - Registration
 データ登録・閲覧
-データ登録はまとめて登録することもできます。
 各項目毎に表示され、時系列で見ることができます。
 ![registration_body](https://user-images.githubusercontent.com/63479656/102961523-d84e8e00-4527-11eb-9e1b-8ea1cd4be930.gif)
+
+# Plan
+- 受診歴
+- 2 診療科追加
+- 2 通院フォローの可否、通院間隔の登録・リマインダー
+- 画像
+- 2 タップし拡大表示
 
 
 # Requirement

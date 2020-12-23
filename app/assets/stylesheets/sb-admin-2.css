@@ -11335,6 +11335,6 @@ body.sidebar-toggled footer.sticky-footer {
 
 .test-image{
   width:100vw;
-  max-width: 100vh;
-  height: auto;
+  max-width: 80%;
+  height: 80%;
 }
