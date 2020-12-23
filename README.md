@@ -44,6 +44,34 @@ Things you may want to cover:
 # Demo
 ![gamen_test1](https://user-images.githubusercontent.com/63479656/102958891-55c2d000-4521-11eb-9c47-ac3eb5b9571e.gif)
 
+# Usage
+- HEADER
+データ登録、閲覧を選びます。
+- 2 ブラウザ表示
+![preview_header](https://user-images.githubusercontent.com/63479656/102960699-dc79ac00-4525-11eb-865c-87e95352bd9f.gif)
+- 2 レスポンシブ表示
+![preview_header_responsive](https://user-images.githubusercontent.com/63479656/102961158-fbc50900-4526-11eb-8af0-b9f5ac85d66b.gif)
+
+ - Registration
+データ登録・閲覧
+各項目毎に表示され、時系列で見ることができます。
+![registration_body](https://user-images.githubusercontent.com/63479656/102961523-d84e8e00-4527-11eb-9e1b-8ea1cd4be930.gif)
+
+# Plan
+- 受診歴
+- 2 診療科追加
+- 2 通院フォローの可否、通院間隔の登録・リマインダー
+- 画像
+- 2 タップし拡大表示
+
+
+# Requirement
+- Ruby On Rails 6.0.0
+- MySQL
+- jQuery
+- Heroku
+
+# DataBase
 ## users テーブル
 | Column                | Type    | Options      |
 | --------------------- | ------- | ------------ |
