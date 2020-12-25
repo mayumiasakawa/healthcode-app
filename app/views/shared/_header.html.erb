@@ -16,6 +16,20 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                データを登録する
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to '身体特徴', new_physicalfinding_overviews_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to '採血・採尿・画像検査', new_overview_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to '受診歴', new_overview_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to 'ワクチン接種歴', new_overview_path, class: "dropdown-item" %>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 登録データを見る
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">

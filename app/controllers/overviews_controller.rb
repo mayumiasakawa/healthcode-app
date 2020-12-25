@@ -15,6 +15,10 @@ class OverviewsController < ApplicationController
   def new
     @overview = Overview.new
   end
+  
+  def new
+    @overview = Overview.new
+  end
 
   def create
     @overview = Overview.create(overview_params)
