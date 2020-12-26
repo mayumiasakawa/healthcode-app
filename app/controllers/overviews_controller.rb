@@ -15,8 +15,8 @@ class OverviewsController < ApplicationController
   def new
     @overview = Overview.new
   end
-  
-  def new
+
+  def new_physicalfinding
     @overview = Overview.new
   end
 
