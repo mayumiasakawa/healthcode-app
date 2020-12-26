@@ -46,7 +46,7 @@ class Overview < ApplicationRecord
   end
 
   def vaccine_type?
-    vaccine_id > 1
+    vaccine_id != 1
   end
 
 end
