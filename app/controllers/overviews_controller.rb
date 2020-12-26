@@ -20,6 +20,10 @@ class OverviewsController < ApplicationController
     @overview = Overview.new
   end
 
+  def new_bloodurine
+    @overview = Overview.new
+  end
+
   def create
     @overview = Overview.create(overview_params)
     if @overview.valid?
