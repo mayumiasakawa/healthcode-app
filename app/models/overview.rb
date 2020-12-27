@@ -20,7 +20,9 @@ class Overview < ApplicationRecord
     validates :bmi, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 40 }, format: {with: /\A[0-9]+\z/},
                if: -> { physicalfinding_measuring_date.present? && height.blank? && weight.blank? && abdominal_circumference.blank? }
   
-    validates :blood_urine_test_date,if: :was_attached?
+    validates :blood_urine_test_date,
+              if: -> { physicalfinding_measuring_date.blank? && medical_care_date.blank? && vaccine_date.blank? },
+              if: :was_attached?
     validates :image,if: -> { blood_urine_test_date.present? }
               
     validates :medical_care_date,
@@ -46,7 +48,7 @@ class Overview < ApplicationRecord
   end
 
   def vaccine_type?
-    vaccine_id != 1
+    vaccine_id.to_i > 1
   end
 
 end
