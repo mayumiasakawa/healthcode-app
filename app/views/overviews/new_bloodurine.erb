@@ -42,7 +42,9 @@
                     </div>
 
                     <div id="image-list">
-                      <%= image_tag @overview.image, id: 'image' if @overview.image.present? %> 
+                    <% if item[image].present? %>
+                      <%= image_tag @overview.image, id: 'image' %> 
+                      <% end %>
                     </div>
 
                       <%= f.submit "登録" ,class:"btn btn-facebook btn-block" %>

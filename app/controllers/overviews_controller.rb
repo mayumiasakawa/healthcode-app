@@ -30,7 +30,7 @@ class OverviewsController < ApplicationController
       @overview.save
       redirect_to root_path
     else
-      render :new
+      render new_overview_path
     end
   end
 
