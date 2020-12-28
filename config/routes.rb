@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     collection do
       get 'new_physicalfinding'
       get 'new_bloodurine'
+      get 'new_medicalcare'
     end
     
   end

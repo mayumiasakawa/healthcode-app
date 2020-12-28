@@ -1,0 +1,54 @@
+<div  id="page-top">
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+        <div id="content">
+
+          <%= render "shared/header" %>
+
+            <!-- Nested Row within Card Body -->
+
+
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                  <h1 class="h4 mb-0 text-gray-800 ml-3">受診歴</h1>
+                </div>
+
+                  <%= form_with model: @overview, url: overviews_path, class: 'user',name: 'form', local: true do |f| %> 
+                    
+                    <%= render 'shared/error_messages', model: f.object %>
+                    <div class="form-group ml-4">
+                        <div class='input-date-wrap'>
+                          <label class="col-sm-12 col-md-2">受診日</label>
+                          <%= raw sprintf(
+                                        f.date_select(
+                                          :medical_care_date,
+                                          use_month_numbers: true,
+                                          prompt:'--',
+                                          start_year: (Time.now.year),
+                                          end_year: 2000,
+                                          date_separator: '%s'),
+                                        "<p> 年 </p>", "<p> 月 </p>",) + "<p> 日 </p>" %>
+                        </div>                                
+                        <div class="row">
+                          <div class="col-12 mt-2">
+                            <%= f.text_field :clinic_name, class:"input-default form-control form-control-user overview-medical-care", id:"clinic_name", placeholder:"病院名(◯◯クリニックなど)", maxlength:"40" %> 
+                          </div>                             
+                          <div class="col-12 mt-2">
+                            <%= f.text_field :disease_name, class:"input-default form-control form-control-user overview-medical-care", id:"disease_name", placeholder:"病名(胃ポリープ、膀胱炎など)", maxlength:"60" %>  
+                          </div>
+                          <div class="col-12 mt-2">
+                            <%= f.text_field :treatment_medicine, class:"input-default form-control form-control-user overview-medical-care", id:"treatment_medicine", placeholder:"処置・薬(内視鏡、抗生剤 服用など)", maxlength:"60" %>  
+                          </div>
+                        </div>
+                    </div>
+
+
+                      <%= f.submit "登録" ,class:"btn btn-facebook btn-block" ,id:"registration" %>
+                  <% end %>
+
+
+<%= render "shared/fotter" %>
