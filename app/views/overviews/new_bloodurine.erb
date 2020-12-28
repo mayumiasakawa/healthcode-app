@@ -36,18 +36,16 @@
                         
                         <div class="btn btn-light btn-icon-split mt-2 blood-urine-test"> 
                           <label class="text">画像を選択
-                            <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp', style:"display:none", id:'img' %>
+                            <%= f.file_field :image, accept: '.jpeg, .jpg, .gif, .png, .bmp', style:"display:none", id:"item-image" %>
                           </label>
                         </div>
                     </div>
 
                     <div id="image-list">
-                    <% if item[image].present? %>
-                      <%= image_tag @overview.image, id: 'image' %> 
-                      <% end %>
+                      <%= image_tag @overview.image, id: 'image' if @overview.image.present? %> 
                     </div>
 
-                      <%= f.submit "登録" ,class:"btn btn-facebook btn-block" %>
+                      <%= f.submit "登録" ,class:"btn btn-facebook btn-block" ,id:"registration" %>
                   <% end %>
 
 
