@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       get 'new_physicalfinding'
       get 'new_bloodurine'
       get 'new_medicalcare'
+      get 'new_vaccine'
     end
     
   end

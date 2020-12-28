@@ -27,6 +27,9 @@ class OverviewsController < ApplicationController
   def new_medicalcare
     @overview = Overview.new
   end
+  def new_vaccine
+    @overview = Overview.new
+  end
 
   def create
     @overview = Overview.create(overview_params)
