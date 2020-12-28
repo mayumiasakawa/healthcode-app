@@ -24,6 +24,13 @@ class OverviewsController < ApplicationController
     @overview = Overview.new
   end
 
+  def new_medicalcare
+    @overview = Overview.new
+  end
+  def new_vaccine
+    @overview = Overview.new
+  end
+
   def create
     @overview = Overview.create(overview_params)
     if @overview.valid?
@@ -72,7 +79,7 @@ class OverviewsController < ApplicationController
   private
 
   def overview_params
-    params.require(:overview).permit(:physicalfinding_measuring_date, :weight, :height, :abdominal_circumference,:bmi, :blood_urine_test_date, :image,:medical_care_date, :clinic_name, :disease_name, :treatment_medicine, :vaccine_date, :vaccine_id).merge(user_id: current_user.id).merge(user_id: current_user.id)
+    params.require(:overview).permit(:physicalfinding_measuring_date, :weight, :height, :abdominal_circumference,:bmi, :blood_urine_test_date, :image,:medical_care_date, :clinic_name, :disease_name, :treatment_medicine, :vaccine_date, :vaccine_id).merge(user_id: current_user.id)
   end
 
   def move_to_index
