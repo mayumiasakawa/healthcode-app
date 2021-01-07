@@ -55,9 +55,11 @@ Things you may want to cover:
  - Registration
 データ登録・閲覧
 各項目毎に表示され、時系列で見ることができます。
-![registration_body](https://user-images.githubusercontent.com/63479656/102961523-d84e8e00-4527-11eb-9e1b-8ea1cd4be930.gif)
+![registration_body](https://user-images.githubusercontent.com/63479656/103861192-5f8f2a80-5100-11eb-9e38-eef1e3881418.gif)
 
 # Plan
+- DB再設計
+  - ネストを用いて再設計
 - 受診歴
   - 診療科追加
   - 通院フォローの可否、通院間隔の登録・リマインダー
