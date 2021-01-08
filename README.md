@@ -24,7 +24,10 @@ Things you may want to cover:
 * ...
 
 # Health Code
-自分の身体の記録を残し、客観的データを見ることで、身体の分析ができ、未来のヘルスケアに役立てます。
+健康診断の結果や、病気を患ったときの歴、体重やBMIなどの管理ができます。
+過去の自分を知ることで、未来の自分のヘルスケアをするために作りました。
+また、このデータが病院受診時に医療側への手助けとなるアプリケーションになれればと思います。
+
 
 # Description
  - 体脂肪率を絞ったのはいつ？ジムにどのくらい通った？
@@ -50,12 +53,14 @@ Things you may want to cover:
   - ブラウザ表示
 ![preview_header](https://user-images.githubusercontent.com/63479656/102960699-dc79ac00-4525-11eb-865c-87e95352bd9f.gif)
   - レスポンシブ表示
+  スマートフォンが10代から40代のインターネット接続端末の80%（※）をシェアしている現状から、レスポンシブ対応の表示でも扱いやすいよう設定しました。
+（※総務省「平成29年通信利用動向調査」（2018）より）
 ![preview_header_responsive](https://user-images.githubusercontent.com/63479656/102961158-fbc50900-4526-11eb-8af0-b9f5ac85d66b.gif)
 
  - Registration
 データ登録・閲覧
 各項目毎に表示され、時系列で見ることができます。
-![registration_body](https://user-images.githubusercontent.com/63479656/103861192-5f8f2a80-5100-11eb-9e38-eef1e3881418.gif)
+![registration](https://user-images.githubusercontent.com/63479656/103861192-5f8f2a80-5100-11eb-9e38-eef1e3881418.gif)
 
 # Plan
 - DB再設計
