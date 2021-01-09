@@ -1,32 +1,15 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 # Health Code
 健康診断の結果や、病気を患ったときの歴、体重やBMIなどの管理ができます。
 過去の自分を知ることで、未来の自分のヘルスケアをするために作りました。
 また、このデータが病院受診時に医療側への手助けとなるアプリケーションになれればと思います。
+
+# Link
+https://healthcode-app.herokuapp.com/
+
+
+# ID/Pass
+ - ID: admin
+ - Pass: 2222
 
 
 # Description
