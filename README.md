@@ -11,7 +11,7 @@ https://healthcode-app.herokuapp.com/
  - ID: admin
  - Pass: 2222
 
- - テスト🆔：test@test.com
+ - テストID：test@test.com
  - テストPass：test123
 
 
