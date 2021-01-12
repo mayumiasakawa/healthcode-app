@@ -11,6 +11,9 @@ https://healthcode-app.herokuapp.com/
  - ID: admin
  - Pass: 2222
 
+ - テスト🆔：test@test.com
+ - テストPass：test123
+
 
 # Description
  - 体脂肪率を絞ったのはいつ？ジムにどのくらい通った？
