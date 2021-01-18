@@ -56,6 +56,7 @@ class OverviewsController < ApplicationController
   end
 
   def destroy
+    @overview.destroy
     if @overview.destroy
       redirect_to root_path
     else
