@@ -115,6 +115,7 @@
                                                 <th>病院名</th>
                                                 <th>病名・診断名</th>
                                                 <th>処置・薬</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -123,7 +124,13 @@
                                                     <td><%= overview_medical_care.medical_care_date %></td>
                                                     <td data-label="病院名"><%= overview_medical_care.clinic_name %></td>
                                                     <td data-label="病名"><%= overview_medical_care.disease_name %></td>
-                                                    <td data-label="処置・薬"><%= overview_medical_care.treatment_medicine %></td>     
+                                                    <td data-label="処置・薬"><%= overview_medical_care.treatment_medicine %></td>
+                                                    <td>  
+                                                    <%= link_to edit_overview_path(overview_medical_care.id), method: :get do%>
+                                                        <div class="btn btn-info btn-circle btn-sm"><i class="far fa-edit"></i></div>
+                                                        <div class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash btn-sm"></i></div>
+                                                    <% end %>
+                                                    </td>
                                                 </tr> 
                                             <% end %>
                                         </tbody>
