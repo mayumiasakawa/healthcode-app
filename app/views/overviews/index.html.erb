@@ -83,7 +83,12 @@
                                 <% if @overview_blood_urine_tests.where(user_id: current_user.id).present? %>
                                     <div class="font-weight-bold text-uppercase mt-2 mb-2">
                                             最新測定日 <%= @overview_blood_urine_tests.where(user_id: current_user.id).first.blood_urine_test_date %>
-                                    </div>                                                               
+                                            <%= link_to edit_overview_path(@overview_blood_urine_tests.where(user_id: current_user.id).first.id), method: :get do%>
+                                                <div class="btn btn-info btn-circle btn-sm"><i class="far fa-edit"></i></div>
+                                                <div class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash btn-sm"></i></div>
+                                            <% end %>
+                                    </div>
+                                    
                                     <span class="h5 mb-0 font-weight-bold text-gray-800 mr-5">
                                         <%= image_tag @overview_blood_urine_tests.where(user_id: current_user.id).first.image, class: 'test-image' if @overview_blood_urine_tests.where(user_id: current_user.id).first.image.present? %>                                         
                                     </span>
@@ -110,6 +115,7 @@
                                                 <th>病院名</th>
                                                 <th>病名・診断名</th>
                                                 <th>処置・薬</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -118,7 +124,13 @@
                                                     <td><%= overview_medical_care.medical_care_date %></td>
                                                     <td data-label="病院名"><%= overview_medical_care.clinic_name %></td>
                                                     <td data-label="病名"><%= overview_medical_care.disease_name %></td>
-                                                    <td data-label="処置・薬"><%= overview_medical_care.treatment_medicine %></td>     
+                                                    <td data-label="処置・薬"><%= overview_medical_care.treatment_medicine %></td>
+                                                    <td>  
+                                                    <%= link_to edit_overview_path(overview_medical_care.id), method: :get do%>
+                                                        <div class="btn btn-info btn-circle btn-sm"><i class="far fa-edit"></i></div>
+                                                        <div class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash btn-sm"></i></div>
+                                                    <% end %>
+                                                    </td>
                                                 </tr> 
                                             <% end %>
                                         </tbody>
@@ -145,13 +157,20 @@
                                             <tr class="thead bg-primary bg-gradient text-light">
                                                 <th>接種日</th>
                                                 <th>種類</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <% @overview_vaccines.first(3).each do |overview_vaccine| %>
                                                 <tr>
-                                                        <td><%= overview_vaccine.vaccine_date %></td>
-                                                        <td data-label="種類"><%= overview_vaccine.vaccine.name %></td>
+                                                    <td><%= overview_vaccine.vaccine_date %></td>
+                                                    <td data-label="種類"><%= overview_vaccine.vaccine.name %></td>
+                                                    <td>
+                                                    <%= link_to edit_overview_path(overview_vaccine.id), method: :get do%>
+                                                        <div class="btn btn-info btn-circle btn-sm"><i class="far fa-edit"></i></div>
+                                                        <div class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash btn-sm"></i></div>
+                                                    <% end %>
+                                                </td>
                                                 </tr>
                                             <% end %>
                                         </tbody>
