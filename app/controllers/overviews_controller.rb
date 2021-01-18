@@ -7,7 +7,6 @@ class OverviewsController < ApplicationController
   before_action :overview_blood_urine_test, only: [:index, :bloodurine]
   before_action :overview_medical_care, only: [:index, :medicalcare]
   before_action :overview_vaccines, only: [:index, :vaccine]
-  
 
   def index
   end
@@ -57,6 +56,7 @@ class OverviewsController < ApplicationController
   end
 
   def destroy
+    @overview.destroy
     if @overview.destroy
       redirect_to root_path
     else
