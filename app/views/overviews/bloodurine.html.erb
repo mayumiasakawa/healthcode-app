@@ -19,7 +19,8 @@
                 </div>
                 <div class="card-body">
                     <% if @overview_blood_urine_tests.where.not(blood_urine_test_date:nil).where(user_id: current_user.id).present? %>
-                            <% @overview_blood_urine_tests.each do |overview| %>
+                           
+                    <% @overview_blood_urine_tests.each do |overview| %>
                                 <% if current_user.id == overview.user_id %>
                                     <div class="font-weight-bold text-uppercase mt-2 mb-2">
                                             測定日 <%= overview.blood_urine_test_date %>
